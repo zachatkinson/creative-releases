@@ -1,14 +1,15 @@
 {
-    "version": "1.10.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.10.0/creative-tracking-1.10.0.zip",
-    "sha256": "ce6a250db6586b33a627bf6acddc1f7d485326d9fee3278b6fc8eba6affe6469",
+    "version": "1.10.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.10.1/creative-tracking-1.10.1.zip",
+    "sha256": "fe9292b5a005ffe159c59e4bf69e80362fd45dd525c092cbc606c1473296e385",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.10.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.10.1",
     "changelog": [
-        "Settings pages are tabs, and each group of settings a card in one column with labels above the fields.",
-        "Carriers are one list instead of a table per country: each with its initials, name, country and link's site, a switch, and an Edit panel for its name and link. A search and Show and Country filters (Suggested by default: what is on plus the store's country and Global) find a carrier among the 1,000-odd; \"Add a carrier\" holds the full list and your own. The fields saved are the same.",
-        "Admin styles use WordPress 7.0's design tokens, so they follow the admin colour scheme."
+        "Ship orders: the list is a card with its heading and the page-wide status choice on top, each order's status as a label, roomier fields, and Save kept in view at the bottom while you scroll.",
+        "Import tracking: the form is two cards, Rows to import and Options, with the columns explained in a list you can open; the preview shows each row's result beside a coloured dot, with Apply in the card's footer.",
+        "Shipping report: the period as a segmented control, the summary as figures, each table in a card; wide tables scroll inside their card on a phone.",
+        "The order screen's Tracking box shows each parcel as a small card."
     ]
 }
