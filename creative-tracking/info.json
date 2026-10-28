@@ -1,13 +1,14 @@
 {
-    "version": "1.9.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.9.0/creative-tracking-1.9.0.zip",
-    "sha256": "77175c36000c92a337eff9fe7921eb34d968bf1bfcf5e2125a1589ab880e65d6",
+    "version": "1.10.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.10.0/creative-tracking-1.10.0.zip",
+    "sha256": "ce6a250db6586b33a627bf6acddc1f7d485326d9fee3278b6fc8eba6affe6469",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.9.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.10.0",
     "changelog": [
-        "Delay alerts, with live parcel status: a daily Parcel delays email to the shop, off until switched on under WooCommerce → Settings → Emails (ctracking_parcel_delays, to the admin email unless recipients are given), listing parcels that newly have a delivery problem, passed their expected delivery date or went a number of days without an update from the carrier (setting Delay alerts, 5 days by default). Each reason is listed once; the job (ctracking_delay_check) reads stored statuses and makes no request. Rules in Domain\\ParcelDelay; the last check's time is kept in ctracking_delays_checked, deleted on uninstall.",
-        "A parcel past its expected delivery date and not delivered shows \"In transit, was expected 5 November 2026\" instead of \"expected\" or \"Arriving\", on the order, the orders list, My Account, the tracking page and in emails."
+        "Settings pages are tabs, and each group of settings a card in one column with labels above the fields.",
+        "Carriers are one list instead of a table per country: each with its initials, name, country and link's site, a switch, and an Edit panel for its name and link. A search and Show and Country filters (Suggested by default: what is on plus the store's country and Global) find a carrier among the 1,000-odd; \"Add a carrier\" holds the full list and your own. The fields saved are the same.",
+        "Admin styles use WordPress 7.0's design tokens, so they follow the admin colour scheme."
     ]
 }
