@@ -1,19 +1,18 @@
 {
-    "version": "1.4.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.4.0/creative-tracking-1.4.0.zip",
-    "sha256": "3059b0435985cd31b16ae696938d6f79bb476448d7d220f932ad4187388b8a6a",
+    "version": "1.4.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.4.1/creative-tracking-1.4.1.zip",
+    "sha256": "7f79ea708304157dd5e7f81c5e91ce802e9d33d59082bee4e0d21167ce0e6441",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.4.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.4.1",
     "changelog": [
-        "Live parcel status (Status\\LiveStatus), off by default: with the Live status setting on and the shop's own 17TRACK API key (or CTRACKING_17TRACK_KEY), each tracking number added afterwards is registered with 17TRACK in the background (Action Scheduler ctracking_status_sync). Sent: the number, 17TRACK's carrier code (47 of the default carriers mapped; others detected) and <order ID>:<tracking ID>; nothing about the customer. The settings say so, and a privacy policy paragraph is suggested.",
-        "Webhook POST /wp-json/creative-tracking/v1/17track, accepting only pushes signed with the shop's key; late or replayed pushes don't roll a status back. A poll (ctracking_status_poll, every 12 hours) fetches what a missed push would have said.",
-        "Status\\StatusProvider (filter ctracking_status_provider) with Status\\SeventeenTrack, and Domain\\SeventeenTrackFormat and Domain\\ParcelStatus, pure and unit-tested.",
-        "Status shown on the order screen (with the carrier's words for staff), the orders list, a Status column in My Account and a Status line in the tracking emails; refusals (\"Not followed: …\") on the order screen. Status changes add an order note and fire ctracking_parcel_status_changed.",
-        "Emails customer_parcel_out_for_delivery, customer_parcel_delivered and customer_parcel_problem, each off until switched on, sent once per stage.",
-        "Order meta _ctracking_parcels and _ctracking_parcels_open, beside AST's items, which are unchanged.",
-        "Domain\\Shipment has an optional status; the My Account and email tracking templates are version 1.4.0.",
-        "Uninstall and deactivation unschedule the live status jobs."
+        "The My Account and Track an order tracking table uses WooCommerce's shop_table_responsive, so it stacks on phones; the link cell is an actions cell, with no stray \": \" label; the section has space below it. Template version 1.4.1. A Playwright check at 375 px covers both pages.",
+        "The orders list's Complete quick action takes the Shipped label (woocommerce_admin_order_actions).",
+        "The status poll orders open orders by when they were last checked, oldest first, so every one is reached instead of the first 50 again and again.",
+        "Fulfillments\\CoreSync catches errors from WooCommerce's Order Fulfillments beta: it logs them, switches the sync off for the request, and records a failed backfill to retry on the next WooCommerce version.",
+        "The update check's request sends Creative Tracking/<version> as its user agent; WordPress's default names the site.",
+        "Deactivation unschedules every job in Plugin::JOBS; uninstall also deletes the backfill marker.",
+        "Releases run the full CI workflow first (release.yml calls ci.yml); third-party actions are pinned to commit SHAs. A weekly workflow tests against WooCommerce's latest stable release, outside the release gate."
     ]
 }
