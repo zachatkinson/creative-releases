@@ -1,18 +1,23 @@
 {
-    "version": "1.4.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.4.1/creative-tracking-1.4.1.zip",
-    "sha256": "7f79ea708304157dd5e7f81c5e91ce802e9d33d59082bee4e0d21167ce0e6441",
+    "version": "1.5.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.5.0/creative-tracking-1.5.0.zip",
+    "sha256": "2f11aa981db690d47f4424f430cec20473ca0fe87b79e0ba3d38aab13feeaa51",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.4.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.5.0",
     "changelog": [
-        "The My Account and Track an order tracking table uses WooCommerce's shop_table_responsive, so it stacks on phones; the link cell is an actions cell, with no stray \": \" label; the section has space below it. Template version 1.4.1. A Playwright check at 375 px covers both pages.",
-        "The orders list's Complete quick action takes the Shipped label (woocommerce_admin_order_actions).",
-        "The status poll orders open orders by when they were last checked, oldest first, so every one is reached instead of the first 50 again and again.",
-        "Fulfillments\\CoreSync catches errors from WooCommerce's Order Fulfillments beta: it logs them, switches the sync off for the request, and records a failed backfill to retry on the next WooCommerce version.",
-        "The update check's request sends Creative Tracking/<version> as its user agent; WordPress's default names the site.",
-        "Deactivation unschedules every job in Plugin::JOBS; uninstall also deletes the backfill marker.",
-        "Releases run the full CI workflow first (release.yml calls ci.yml); third-party actions are pinned to commit SHAs. A weekly workflow tests against WooCommerce's latest stable release, outside the release gate."
+        "Tracking page ([ctracking_track], Frontend\\TrackingPage): each parcel's expected or delivered date first, its progress in five steps, contents, carrier link and status history, from the email's link (order key, no login) or by order number and billing email. Settings: Tracking page and Returns and help page. A small stylesheet, assets/tracking-page.css, loaded only on that page. Wording from Baymard Institute's public order-tracking research.",
+        "With a tracking page chosen, the shipping and parcel status emails link to it first (\"See where your order is\"); the Delivered and Delivery problem emails link to the Returns and help page.",
+        "My Account → Orders: a Shipping column (\"Arriving 30 October 2026\", \"2 parcels: 1 delivered, 1 on the way\") and a Track action (Frontend\\MyOrders, filter ctracking_my_orders_column).",
+        "WooCommerce → Shipping report (Admin\\ReportPage, Domain\\ShippingReport): days to ship, orders waiting, parcels per carrier with delivery times and problems, parcels per day; 7, 30 or 90 days.",
+        "Payment providers, off by default: tracking sent to PayPal (WooCommerce PayPal Payments) and Stripe (WooCommerce Stripe Payment Gateway) through their own plugins, in the background (ctracking_payment_sync), once per number, noted on the order. Not yet tried against live accounts.",
+        "\"Resend shipping email to customer\" order action.",
+        "French for France (fr_FR), adapted from the Canadian French; to be reviewed by a native speaker.",
+        "\"Add tracking\" bulk action in the orders list: opens Ship orders with the chosen orders.",
+        "WP-CLI: wp ctracking list|add|remove|import.",
+        "Live status keeps each parcel's earlier statuses (history in _ctracking_parcels, 20 at most).",
+        "Email templates emails/tracking.php, emails/plain/tracking.php, emails/customer-parcel-status.php and its plain version are version 1.5.0 (page_url, help_url).",
+        "Deactivation and uninstall also unschedule ctracking_payment_sync."
     ]
 }
