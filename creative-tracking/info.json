@@ -1,18 +1,20 @@
 {
-    "version": "1.6.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.6.1/creative-tracking-1.6.1.zip",
-    "sha256": "aed6c8361cc8cd6ac71520493c14624a665be807ce2fcd6350181cb0478e2799",
+    "version": "1.7.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.7.0/creative-tracking-1.7.0.zip",
+    "sha256": "cc85b37200dc27fcc6966b44c6e568ad82efb0a48fbe221300ea21d78f5438bf",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.6.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.7.0",
     "changelog": [
-        "Order screen: a tracking number that can't be saved no longer leaves an empty form beside WooCommerce's green \"Order updated\". The box shows the error (role=\"alert\") and puts the carrier, number, date and custom carrier back, kept for that user and order for one view.",
-        "Add tracking (bulk action): chosen orders that aren't waiting to ship (On hold, Shipped…) were dropped silently; Ship orders now lists them with their status and says where to add their tracking (ShipOrdersPage::skipped()).",
-        "Import preview: a row with a problem shows its date as written (date_text on each checked row), not today's date; an empty number is reported before the carrier it would have been read from; each problem says how to fix it; Back to edit returns to the form with the rows, the slash-date choice and Mark shipped as they were (a file's rows come back in the paste box). Start over is still there.",
-        "Shipping report: parcels shipped by day counts only the period's days (ShippingReport::build() takes the first day); a first ship date before the order, or a delivery before the ship date, is left out of the averages instead of counting as zero days. \"Shipped\" and \"Not shipped yet\" read \"Orders with tracking\" and \"Orders without tracking yet\", since they don't follow the Shipped status.",
-        "Settings: \"Link words\" is \"Tracking button text\"; carrier link fields take the table's width, and below 782 px each carrier field is labelled with its column (data-colname); the PayPal and Stripe checkboxes are disabled while their plugin isn't active and connected, unless already on.",
-        "Ship orders: the number field shows \"Tracking number\"; a row's status choices read \"Default (chosen above)\" and \"Leave the status as it is\".",
-        "Order box: \"Click Update to save it with the order\"; items read \"(2 not in a parcel yet)\" in place of \"(2 left)\"."
+        "Live parcel status from Ship24, TrackingMore, AfterShip or EasyPost as well as 17TRACK (setting status_service, 17TRACK by default): Status\\ApiProvider sends a Domain\\StatusApi (Ship24Format, TrackingMoreFormat, AfterShipFormat, EasyPostFormat, pure and unit-tested from each service's documentation) with the shop's key, spaced to the service's rate and stopping a run after 20 seconds. Each service has its own webhook (/wp-json/creative-tracking/v1/<service>), accepted only with the shop's webhook secret (new setting status_secret, or CTRACKING_STATUS_SECRET; CTRACKING_STATUS_KEY for the key). Ship24's pushes may carry several parcels (Status\\MultiPushProvider); EasyPost keeps no tag, so its pushes are matched by tracking number. Filter ctracking_status_carrier for a service's carrier code. Switching service (or key) sends open parcels to the new one (ctracking_status_switched). TrackingMore needs the carrier: a number without a TrackingMore code is refused on the order without a request.",
+        "Proof of delivery, stored with a delivered parcel's status in _ctracking_parcels (signed_by, left_at; approved 28 Oct 2026): \"Signed for by … Left at: …\" (Display::proof()) on the order screen and, for the signed-in customer who owns the order, in My Account. Never on the tracking page, Track an order or in emails; no photos.",
+        "Ship orders (with how many wait) and Import tracking as buttons above the orders list (Admin\\OrdersScreen).",
+        "The shipping report is WooCommerce → Reports → Shipping (woocommerce_admin_reports); the old address redirects there. Ship orders, Import tracking and the report are off WooCommerce's menu; their addresses still work, with Orders highlighted.",
+        "Tracking settings in four pages (&view=status, payments, import), each saving only its own fields.",
+        "The orders list's Tracking column shows the first parcel and folds the rest under \"1 more parcel\".",
+        "templates/myaccount/tracking.php is version 1.7.0 (takes $proof).",
+        "The privacy policy suggestion names the chosen service.",
+        "A refused key (401, 403) at AfterShip or EasyPost is an error for the run, so parcels stay waiting until the key is fixed, instead of being closed."
     ]
 }
