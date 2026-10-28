@@ -1,23 +1,21 @@
 {
-    "version": "1.5.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.5.0/creative-tracking-1.5.0.zip",
-    "sha256": "2f11aa981db690d47f4424f430cec20473ca0fe87b79e0ba3d38aab13feeaa51",
+    "version": "1.6.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.6.0/creative-tracking-1.6.0.zip",
+    "sha256": "2e5a733a19346c5c2b58587734b0ad71834e17aef1d7cff0048c6d83813e46f2",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.5.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.6.0",
     "changelog": [
-        "Tracking page ([ctracking_track], Frontend\\TrackingPage): each parcel's expected or delivered date first, its progress in five steps, contents, carrier link and status history, from the email's link (order key, no login) or by order number and billing email. Settings: Tracking page and Returns and help page. A small stylesheet, assets/tracking-page.css, loaded only on that page. Wording from Baymard Institute's public order-tracking research.",
-        "With a tracking page chosen, the shipping and parcel status emails link to it first (\"See where your order is\"); the Delivered and Delivery problem emails link to the Returns and help page.",
-        "My Account → Orders: a Shipping column (\"Arriving 30 October 2026\", \"2 parcels: 1 delivered, 1 on the way\") and a Track action (Frontend\\MyOrders, filter ctracking_my_orders_column).",
-        "WooCommerce → Shipping report (Admin\\ReportPage, Domain\\ShippingReport): days to ship, orders waiting, parcels per carrier with delivery times and problems, parcels per day; 7, 30 or 90 days.",
-        "Payment providers, off by default: tracking sent to PayPal (WooCommerce PayPal Payments) and Stripe (WooCommerce Stripe Payment Gateway) through their own plugins, in the background (ctracking_payment_sync), once per number, noted on the order. Not yet tried against live accounts.",
-        "\"Resend shipping email to customer\" order action.",
-        "French for France (fr_FR), adapted from the Canadian French; to be reviewed by a native speaker.",
-        "\"Add tracking\" bulk action in the orders list: opens Ship orders with the chosen orders.",
-        "WP-CLI: wp ctracking list|add|remove|import.",
-        "Live status keeps each parcel's earlier statuses (history in _ctracking_parcels, 20 at most).",
-        "Email templates emails/tracking.php, emails/plain/tracking.php, emails/customer-parcel-status.php and its plain version are version 1.5.0 (page_url, help_url).",
-        "Deactivation and uninstall also unschedule ctracking_payment_sync."
+        "Import folder (Admin\\ImportFolder, Import\\FolderQueue), off by default: CSV files a warehouse or label tool drops into a folder are imported every hour with the CSV import's checks, then moved to done/ (with a report of skipped rows) or failed/. The folder is in uploads under a random name, closed to the web; CTRACKING_IMPORT_DIR or the ctracking_import_path filter move it. Settings: Mark shipped, Dates with slashes. Nothing is fetched.",
+        "Spanish (es_ES) and German (de_DE), machine-translated; to be reviewed by native speakers.",
+        "The tracking page showing an order defines DONOTCACHEPAGE (through wc_nocache_headers()), so WP Super Cache, W3 Total Cache, WP Rocket and LiteSpeed Cache leave it out; headers alone didn't stop WP Super Cache. The form page stays cacheable.",
+        "The tracking page's steps and history are no longer indented by a theme's content list padding (Kadence's .single-content ol).",
+        "The Tracking page and Returns and help page settings are named by their labels for screen readers (plain selects in place of WooCommerce's single_select_page).",
+        "The shipping report keeps each range's figures for an hour, cleared when tracking, a parcel's status or an order's status changes, instead of reading up to 2,001 orders on every view.",
+        "templates/tracking-page.php (version 1.6.0) prints aria-current and is-problem through esc_attr(); the current step is aria-current=\"step\", the others \"false\".",
+        "Translator comments sit directly above each carrier label string; the update manifest reads a package address's host and path without parse_url().",
+        "French for France: \"l’e-mail\" and \"cet e-mail\" in place of \"le e-mail\" and \"ce e-mail\".",
+        "Activation (Plugin::activate()) starts the import folder as well as the status poll; deactivation and uninstall stop ctracking_import_folder; uninstall deletes the import folder's options and the report's cache (not the folder's files)."
     ]
 }
