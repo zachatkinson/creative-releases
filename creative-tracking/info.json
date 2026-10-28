@@ -1,19 +1,19 @@
 {
-    "version": "1.3.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.3.0/creative-tracking-1.3.0.zip",
-    "sha256": "1efd926981dea470dabeb52616476f98cb03fdf9a84653ee0c72cb345559694a",
+    "version": "1.4.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.4.0/creative-tracking-1.4.0.zip",
+    "sha256": "3059b0435985cd31b16ae696938d6f79bb476448d7d220f932ad4187388b8a6a",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.3.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.4.0",
     "changelog": [
-        "Item-level parcels in AST PRO's format (products_list: { product, item_id, qty } objects, '' for the whole order), so AST PRO reads them. Domain\\ItemAllocation refuses an item not on the order, a quantity that isn't above zero, and more than is left to ship (ordered, less refunded, less other parcels). The order box has a folded \"Items in this parcel\" on orders with more than one unit; emails say \"In this parcel: …\" and My Account adds an \"In this parcel\" column when any parcel lists items.",
-        "REST: AST PRO's sku and qty fields on POST, its wc-ast-pro/v3 namespace, and products_list in responses. New errors ctracking_unknown_sku, ctracking_sku_qty_mismatch, ctracking_unknown_item, ctracking_bad_qty, ctracking_too_many.",
-        "CSV import: sku and qty columns; rows repeating an order and tracking number with a SKU each are one parcel. The preview shows an Item column.",
-        "Fulfillments\\CoreSync: when WooCommerce's Order Fulfillments feature is on, each parcel is a fulfilled Fulfillment (items, number, provider mapped by Domain\\CoreProviders, link, ship date) linked by _ctracking_tracking_id, and Fulfillments created, changed or deleted in WooCommerce change the tracking. No emails or status changes from syncing. A background copy (Action Scheduler) covers orders from before the feature was on. Filter ctracking_sync_fulfillments.",
-        "Domain\\MoreCarriers: 1,028 more carriers from AST's full list (TrackShip's), written by tools/more-carriers.php, off until switched on with \"Add from the full list\" in the carriers settings. Tracking saved with any of their slugs resolves its name and link while off.",
-        "My Account's tracking block steps aside when WooCommerce lists the order's shipments itself (Order Fulfillments on and fulfilled).",
-        "TrackingService::update() takes an optional $strict (default true), as add() does.",
-        "The REST response has a sixth field, products_list (an empty list for whole-order parcels)."
+        "Live parcel status (Status\\LiveStatus), off by default: with the Live status setting on and the shop's own 17TRACK API key (or CTRACKING_17TRACK_KEY), each tracking number added afterwards is registered with 17TRACK in the background (Action Scheduler ctracking_status_sync). Sent: the number, 17TRACK's carrier code (47 of the default carriers mapped; others detected) and <order ID>:<tracking ID>; nothing about the customer. The settings say so, and a privacy policy paragraph is suggested.",
+        "Webhook POST /wp-json/creative-tracking/v1/17track, accepting only pushes signed with the shop's key; late or replayed pushes don't roll a status back. A poll (ctracking_status_poll, every 12 hours) fetches what a missed push would have said.",
+        "Status\\StatusProvider (filter ctracking_status_provider) with Status\\SeventeenTrack, and Domain\\SeventeenTrackFormat and Domain\\ParcelStatus, pure and unit-tested.",
+        "Status shown on the order screen (with the carrier's words for staff), the orders list, a Status column in My Account and a Status line in the tracking emails; refusals (\"Not followed: …\") on the order screen. Status changes add an order note and fire ctracking_parcel_status_changed.",
+        "Emails customer_parcel_out_for_delivery, customer_parcel_delivered and customer_parcel_problem, each off until switched on, sent once per stage.",
+        "Order meta _ctracking_parcels and _ctracking_parcels_open, beside AST's items, which are unchanged.",
+        "Domain\\Shipment has an optional status; the My Account and email tracking templates are version 1.4.0.",
+        "Uninstall and deactivation unschedule the live status jobs."
     ]
 }
