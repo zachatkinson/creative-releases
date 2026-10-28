@@ -1,21 +1,18 @@
 {
-    "version": "1.6.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.6.0/creative-tracking-1.6.0.zip",
-    "sha256": "2e5a733a19346c5c2b58587734b0ad71834e17aef1d7cff0048c6d83813e46f2",
+    "version": "1.6.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.6.1/creative-tracking-1.6.1.zip",
+    "sha256": "aed6c8361cc8cd6ac71520493c14624a665be807ce2fcd6350181cb0478e2799",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.6.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.6.1",
     "changelog": [
-        "Import folder (Admin\\ImportFolder, Import\\FolderQueue), off by default: CSV files a warehouse or label tool drops into a folder are imported every hour with the CSV import's checks, then moved to done/ (with a report of skipped rows) or failed/. The folder is in uploads under a random name, closed to the web; CTRACKING_IMPORT_DIR or the ctracking_import_path filter move it. Settings: Mark shipped, Dates with slashes. Nothing is fetched.",
-        "Spanish (es_ES) and German (de_DE), machine-translated; to be reviewed by native speakers.",
-        "The tracking page showing an order defines DONOTCACHEPAGE (through wc_nocache_headers()), so WP Super Cache, W3 Total Cache, WP Rocket and LiteSpeed Cache leave it out; headers alone didn't stop WP Super Cache. The form page stays cacheable.",
-        "The tracking page's steps and history are no longer indented by a theme's content list padding (Kadence's .single-content ol).",
-        "The Tracking page and Returns and help page settings are named by their labels for screen readers (plain selects in place of WooCommerce's single_select_page).",
-        "The shipping report keeps each range's figures for an hour, cleared when tracking, a parcel's status or an order's status changes, instead of reading up to 2,001 orders on every view.",
-        "templates/tracking-page.php (version 1.6.0) prints aria-current and is-problem through esc_attr(); the current step is aria-current=\"step\", the others \"false\".",
-        "Translator comments sit directly above each carrier label string; the update manifest reads a package address's host and path without parse_url().",
-        "French for France: \"l’e-mail\" and \"cet e-mail\" in place of \"le e-mail\" and \"ce e-mail\".",
-        "Activation (Plugin::activate()) starts the import folder as well as the status poll; deactivation and uninstall stop ctracking_import_folder; uninstall deletes the import folder's options and the report's cache (not the folder's files)."
+        "Order screen: a tracking number that can't be saved no longer leaves an empty form beside WooCommerce's green \"Order updated\". The box shows the error (role=\"alert\") and puts the carrier, number, date and custom carrier back, kept for that user and order for one view.",
+        "Add tracking (bulk action): chosen orders that aren't waiting to ship (On hold, Shipped…) were dropped silently; Ship orders now lists them with their status and says where to add their tracking (ShipOrdersPage::skipped()).",
+        "Import preview: a row with a problem shows its date as written (date_text on each checked row), not today's date; an empty number is reported before the carrier it would have been read from; each problem says how to fix it; Back to edit returns to the form with the rows, the slash-date choice and Mark shipped as they were (a file's rows come back in the paste box). Start over is still there.",
+        "Shipping report: parcels shipped by day counts only the period's days (ShippingReport::build() takes the first day); a first ship date before the order, or a delivery before the ship date, is left out of the averages instead of counting as zero days. \"Shipped\" and \"Not shipped yet\" read \"Orders with tracking\" and \"Orders without tracking yet\", since they don't follow the Shipped status.",
+        "Settings: \"Link words\" is \"Tracking button text\"; carrier link fields take the table's width, and below 782 px each carrier field is labelled with its column (data-colname); the PayPal and Stripe checkboxes are disabled while their plugin isn't active and connected, unless already on.",
+        "Ship orders: the number field shows \"Tracking number\"; a row's status choices read \"Default (chosen above)\" and \"Leave the status as it is\".",
+        "Order box: \"Click Update to save it with the order\"; items read \"(2 not in a parcel yet)\" in place of \"(2 left)\"."
     ]
 }
