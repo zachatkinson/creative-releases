@@ -1,20 +1,19 @@
 {
-    "version": "1.2.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.2.0/creative-tracking-1.2.0.zip",
-    "sha256": "ab90544a4c1d443492c6be66ac3abd7579b81565f5c4ab9b6cc562374645242a",
+    "version": "1.3.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.3.0/creative-tracking-1.3.0.zip",
+    "sha256": "1efd926981dea470dabeb52616476f98cb03fdf9a84653ee0c72cb345559694a",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.2.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.3.0",
     "changelog": [
-        "Updates from the agency's releases through core's Update URI mechanism (Updates\\Updater): new versions show on the Plugins and Updates screens with a View details popup, and auto-updates work as for any plugin. The manifest is read twice a day from a public file on GitHub, nothing about the site is sent, and each zip is checked against its published SHA-256 before it installs. Off with CTRACKING_DISABLE_UPDATES or the ctracking_updates_enabled filter.",
-        ".github/workflows/release.yml and tools/release-manifest.php: a v<version> tag builds the zip and publishes it with its manifest to zachatkinson/creative-releases.",
-        "34 more built-in carriers, with AST's slugs, for the United Kingdom, Ireland, Australia, New Zealand, Germany, France and the Netherlands. Which carriers start switched on follows the store's base country; a saved choice still wins.",
-        "WooCommerce → Ship orders: the orders waiting to ship (Processing, and Partially shipped when on), oldest first, with a number, carrier and status choice per row and one Save. Tracking is saved before the status changes; failed rows keep what was typed and say why. One query for the page's orders, their meta and items.",
-        "Carrier from the number: national posts' S10 numbers (RR123456789GB is Royal Mail's; also IE, AU, NZ, DE, FR, NL) and PostNL 3S numbers.",
-        "The admin stylesheet also loads on Ship orders and the Tracking settings (still nothing on the storefront).",
-        "Carriers settings: one table per country, the store's own and Worldwide first, the others folded with how many are on, the shop's own carriers last.",
-        "UPS is a worldwide carrier: on in every store country, and listed under Global by the REST providers route (AST lists it under the United States).",
-        "A Canadian store's defaults are unchanged. A store elsewhere that never saved the carrier settings now starts with its own country's carriers instead of Canada's."
+        "Item-level parcels in AST PRO's format (products_list: { product, item_id, qty } objects, '' for the whole order), so AST PRO reads them. Domain\\ItemAllocation refuses an item not on the order, a quantity that isn't above zero, and more than is left to ship (ordered, less refunded, less other parcels). The order box has a folded \"Items in this parcel\" on orders with more than one unit; emails say \"In this parcel: …\" and My Account adds an \"In this parcel\" column when any parcel lists items.",
+        "REST: AST PRO's sku and qty fields on POST, its wc-ast-pro/v3 namespace, and products_list in responses. New errors ctracking_unknown_sku, ctracking_sku_qty_mismatch, ctracking_unknown_item, ctracking_bad_qty, ctracking_too_many.",
+        "CSV import: sku and qty columns; rows repeating an order and tracking number with a SKU each are one parcel. The preview shows an Item column.",
+        "Fulfillments\\CoreSync: when WooCommerce's Order Fulfillments feature is on, each parcel is a fulfilled Fulfillment (items, number, provider mapped by Domain\\CoreProviders, link, ship date) linked by _ctracking_tracking_id, and Fulfillments created, changed or deleted in WooCommerce change the tracking. No emails or status changes from syncing. A background copy (Action Scheduler) covers orders from before the feature was on. Filter ctracking_sync_fulfillments.",
+        "Domain\\MoreCarriers: 1,028 more carriers from AST's full list (TrackShip's), written by tools/more-carriers.php, off until switched on with \"Add from the full list\" in the carriers settings. Tracking saved with any of their slugs resolves its name and link while off.",
+        "My Account's tracking block steps aside when WooCommerce lists the order's shipments itself (Order Fulfillments on and fulfilled).",
+        "TrackingService::update() takes an optional $strict (default true), as add() does.",
+        "The REST response has a sixth field, products_list (an empty list for whole-order parcels)."
     ]
 }
