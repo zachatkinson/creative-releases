@@ -1,0 +1,20 @@
+{
+    "version": "1.2.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.2.0/creative-tracking-1.2.0.zip",
+    "sha256": "ab90544a4c1d443492c6be66ac3abd7579b81565f5c4ab9b6cc562374645242a",
+    "requires": "6.6",
+    "requires_php": "8.1",
+    "tested": "7.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.2.0",
+    "changelog": [
+        "Updates from the agency's releases through core's Update URI mechanism (Updates\\Updater): new versions show on the Plugins and Updates screens with a View details popup, and auto-updates work as for any plugin. The manifest is read twice a day from a public file on GitHub, nothing about the site is sent, and each zip is checked against its published SHA-256 before it installs. Off with CTRACKING_DISABLE_UPDATES or the ctracking_updates_enabled filter.",
+        ".github/workflows/release.yml and tools/release-manifest.php: a v<version> tag builds the zip and publishes it with its manifest to zachatkinson/creative-releases.",
+        "34 more built-in carriers, with AST's slugs, for the United Kingdom, Ireland, Australia, New Zealand, Germany, France and the Netherlands. Which carriers start switched on follows the store's base country; a saved choice still wins.",
+        "WooCommerce → Ship orders: the orders waiting to ship (Processing, and Partially shipped when on), oldest first, with a number, carrier and status choice per row and one Save. Tracking is saved before the status changes; failed rows keep what was typed and say why. One query for the page's orders, their meta and items.",
+        "Carrier from the number: national posts' S10 numbers (RR123456789GB is Royal Mail's; also IE, AU, NZ, DE, FR, NL) and PostNL 3S numbers.",
+        "The admin stylesheet also loads on Ship orders and the Tracking settings (still nothing on the storefront).",
+        "Carriers settings: one table per country, the store's own and Worldwide first, the others folded with how many are on, the shop's own carriers last.",
+        "UPS is a worldwide carrier: on in every store country, and listed under Global by the REST providers route (AST lists it under the United States).",
+        "A Canadian store's defaults are unchanged. A store elsewhere that never saved the carrier settings now starts with its own country's carriers instead of Canada's."
+    ]
+}
