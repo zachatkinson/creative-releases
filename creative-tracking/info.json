@@ -1,12 +1,21 @@
 {
-    "version": "1.7.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.7.1/creative-tracking-1.7.1.zip",
-    "sha256": "f24d99d5d4323416fd3083ce29842de652845d0954ec8c493e5bfe675e89879a",
+    "version": "1.7.2",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.7.2/creative-tracking-1.7.2.zip",
+    "sha256": "dfc8159d575a045db1eef32f1ad94940f3e5765f04eeb23c17518b04c2a8bbb4",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.7.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.7.2",
     "changelog": [
-        "The plugin is named Creative Shipment Tracking (was Creative Tracking), so \"tracking\" isn't read as analytics. Only the name changed: the folder and slug creative-tracking, the text domain, the ctracking_ prefixes, hooks, REST routes, settings, stored data and the update address stay as they were, so installed sites update in place. The update request's user agent is Creative Shipment Tracking/<version>."
+        "TrackingMore pushes: TrackingMore's docs disagree on what its signature header signs (the example: the timestamp header, in hex; the prose: the body, in Base64), and a signature over the timestamp alone isn't tied to the body, so anyone who saw one genuine push could replay it with any body. A signature over the body, hex or Base64, is accepted and its status stored as before; one over the timestamp only makes the push a prompt: the parcel it names is looked up with TrackingMore's API, as the poll does, and nothing the push says is stored (TrackingMoreFormat::signed(), replacing verify(); push key lookup). The readme asks shops to check one real delivery first.",
+        "A refused push left no trace: the Live parcel status page now shows when the last push arrived and, when refused, whether no signature or token reached WordPress (with the .htaccess line in the readme for hosts that drop Authorization) or it didn't match. Only the time and reason are kept (option ctracking_status_last_push, deleted on uninstall).",
+        "My Account at phone width: the Track your parcel button's label sat against its right edge, inheriting WooCommerce's right-aligned stacked cells; it is centred (templates/myaccount/tracking.php 1.7.2). The tracking page's button was already centred; both are checked in the end-to-end tests.",
+        "Event times without an offset (Ship24's occurrenceDatetime as its docs show it, and the same from TrackingMore and AfterShip) were read as UTC; they are now read in the store's timezone (ApiReply::time()), the nearest guess for the carrier's local time. Times with an offset or Z are read as given.",
+        "Ship24 proof of delivery: its tracking/pod pushes (Proof of Delivery add-on) on the same webhook, with the same secret. A signatory's name or delivery note sent as text is stored as signed_by on the parcel's Delivered status (ParcelStatus::withProof()); a file (PDF or image) is not fetched or stored; a proof for a parcel not yet delivered is dropped and logged. A later Delivered status without its own proof keeps the stored one (ParcelStatus::keepingProof()). The settings tell Ship24 users to add the address as the Proof of Delivery Webhook URL too.",
+        "Carriers settings: a built-in carrier's original name and link show as the fields' placeholders, and the help says an emptied field goes back to the original.",
+        "The API key's help names only the chosen service's page for its key. The Live parcel status and Import folder introductions keep what is sent and to whom in view and fold the rest (<details>).",
+        "Shipping report: \"Orders without tracking yet\" links to Ship orders, and a carrier's delivery problems link to the list of them.",
+        "The order screen's Tracking box says where Resend shipping email is (Order actions, on a Shipped or Partially shipped order).",
+        "The same words for the same choices: \"Dates like 28/10/2026\" with the same three options on Import tracking and the import folder settings; \"Leave the status as it is\" on Ship orders; \"Mark every order Shipped (sends the email with its tracking)\" on Import tracking and the import folder settings; \"one parcel per row\" in the import help."
     ]
 }
