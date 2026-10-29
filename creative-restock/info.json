@@ -1,23 +1,20 @@
 {
-    "version": "1.2.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.2.0/creative-restock-1.2.0.zip",
-    "sha256": "bec4d5fc3488ed10bcdd9cbecefbd71981d5bd2521b948d743b62c843b118e08",
+    "version": "1.2.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.2.1/creative-restock-1.2.1.zip",
+    "sha256": "5659159a1134867bd3f1dc9f1c1601496419ef95891877bad0ff633451f613cc",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.2.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.2.1",
     "changelog": [
-        "Reminders: with Reminders on, the form has an unticked \"Remind me once if it's still in stock and I haven't ordered it.\" box, recorded with its words and time. The hourly sweep sends one \"Still in stock\" email (crestock_reminder) a set number of hours after the alert (24 by default, 1 to 168) to shoppers who ticked it, while the item is still in stock and they haven't bought it. Claimed in one conditional UPDATE, so it goes once.",
-        "My Account: a \"Back in stock\" tab (back-in-stock) listing the open requests the account made while signed in, with state, place in line, expected date and Remove. Guest requests under the account's address aren't listed, since WooCommerce lets an account take any address without proving it.",
-        "Demand shown to shoppers: \"N people are waiting for …\" on the form, in the page's language, with the count from a public, cached GET /creative-restock/v1/items/{id}/waiting read by assets/waiting.js; and \"You're number N in line\" in the reply, after the confirm link and in My Account, while the order in line is oldest first.",
-        "Discontinued items: a box on each product and variation, and an alternative chosen with WooCommerce's product search. Ten minutes after saving, the item's open requests end and each waiting shopper gets one \"No longer available\" email (crestock_discontinued), with \"Notify me about … instead\" when there's an alternative, which moves the request to it once (replace). The form says \"No longer available\" and takes no asks.",
-        "Priority: who hears first by when they asked (the default), lifetime spend (accounts and guests' paid orders, less refunds) or customer role (a number per role; blank roles after, guests last). Ties stay oldest first.",
-        "Hide the form on chosen products (a box on the product), categories or tags. Asks for them are refused.",
-        "A popup style: a button opens the form in a native <dialog> (assets/popup.js), with its title, focus kept inside and returned to the button, Escape to close, and the form left on the page without JavaScript.",
-        "Button colour, text colour, corners and class. A colour pair under 4.5:1 contrast isn't saved, and the error gives the ratio.",
-        "With WooCommerce's \"Hide out of stock items\" on, variable products get a \"Notify me when a sold-out option is back\" chooser, since the sold-out options can't be picked.",
-        "A unit test that fails when assets/form.js passes 5 KB.",
-        "Deleting requests asks first: a confirmation screen lists the requests by address and item (50 at most, then \"and N more\"), with \"Delete N requests\" and Cancel, works without JavaScript and returns to the list page with its filters (WCAG 3.3.4).",
-        "The suggested privacy text uses the shop's own expiry and deletion settings, not 12 months and 90 days."
+        "The popup takes the page's colours: its text colour is inherited from the form, and its background is the nearest one behind the form, up to the body's. Its title read #f4f1ea on white on a dark page before (WCAG 1.4.3).",
+        "The popup leaves the page's status line in place, with its text, so the page doesn't shift and still says which size is sold out after it closes. The dialog has its own status line for the reply and errors.",
+        "Set button colours win over the theme's WooCommerce button rules (!important, only while a colour is set) in the normal, hover, focus and disabled states, so the shopper sees the pair the contrast check passed.",
+        "The Requests list keeps a search with a plus sign (restock-test+120a) through Mark waiting, Unsubscribe, Delete and the confirmation's Cancel: RestockPage::url() encodes its values.",
+        "The sold-out option chooser's legend is \"Width (sold out)\", or \"Sold-out options\" for a product with more than one attribute, so it doesn't share a name with the picker's group.",
+        "The waiting count's sentence comes from wp.i18n._n() for the count, with the plugin's JSON translations, so languages with three or more plural forms read right.",
+        "A move to an alternative whose new request throws gives its claim back, so the link doesn't read as used.",
+        "\"Lifetime spend, high to low\" replaces \"Lifetime spend, highest first\".",
+        "The Back in stock, Still in stock and No longer available emails send through one RestockEmail::sendItem()."
     ]
 }
