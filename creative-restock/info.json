@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.0.0/creative-restock-1.0.0.zip",
+    "sha256": "1dc06ae066866f2d64ac67f27033edd3619b813bff54faf042fbfddf4459a320",
+    "requires": "6.6",
+    "requires_php": "8.1",
+    "tested": "7.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.0.0",
+    "changelog": [
+        "The back-in-stock form: shown only for a sold-out item, under Add to cart on backorderable items (setting backorders, on), headed by the expected date. One ask for several sizes. Posts to creative-restock/v1/requests without a nonce, so it works on cached pages; honeypot, rate limits (10 an hour per IP, 5 per email), optional Cloudflare Turnstile (off). Classic hooks, the creative-restock/notify block, [creative_restock] and [cwginstock_subscribe_form]. A Notify me link on shop pages for sold-out products.",
+        "Requests in {prefix}crestock_requests: double opt-in on by default with one Confirm email per ask, a consent record per request, a separate marketing box (off), quantities (off), locale from determine_locale().",
+        "Restocks in {prefix}crestock_restocks: detection on WooCommerce's stock hooks and an hourly sweep (crestock_sweep); waves of 3 requests per unit, 60 minutes apart, the first after 3 minutes (crestock_wave); sends in Action Scheduler jobs of 50 (crestock_send); a restock that sells out again stops.",
+        "Emails: Back in stock, Confirm your request, Demand digest (off; daily crestock_digest), with List-Unsubscribe one-click headers and the store address in the footer.",
+        "Sales attribution: orders paid within 14 days of a Back in stock email, by its link or the billing email, mark the request bought and add to the restock's orders and revenue.",
+        "Admin: WooCommerce → Restock (Requests, Demand, Restocks, Move from Back In Stock Notifier), a Restock panel per variation with the expected date and Send now, a Waiting column on Products. Settings under WooCommerce → Settings → Products → Back in stock.",
+        "Privacy: 12-month expiry, 90-day retention, 7 days for unconfirmed requests (daily crestock_cleanup); WordPress's personal data exporter and eraser.",
+        "REST API creative-restock/v1 (requests, requests/{id}, reports/demand, restocks, unsubscribe) and WP-CLI wp crestock list|export|import|migrate|send|prune.",
+        "Import from Back In Stock Notifier (dry run first, places in line kept, unsubscribes suppressed) and from CSV.",
+        "Hooks: crestock_request_input, crestock_request_locale, crestock_request_created, crestock_request_confirmed, crestock_request_state_changed, crestock_request_bought, crestock_restock_detected, crestock_wave_recipients, crestock_expected_date, crestock_client_ip, crestock_updates_enabled.",
+        "Canadian French (fr_CA), awaiting a native speaker's review.",
+        "Updates from zachatkinson/creative-releases through the Update URI header, checked against each zip's SHA-256."
+    ]
+}
