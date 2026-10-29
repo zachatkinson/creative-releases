@@ -1,20 +1,12 @@
 {
-    "version": "1.0.2",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.0.2/creative-restock-1.0.2.zip",
-    "sha256": "a8249bd3d0fdb65664c3104e1990e691f99ab5ed7c19c1053b289a66991703de",
+    "version": "1.1.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.1.0/creative-restock-1.1.0.zip",
+    "sha256": "b98e84614f2d9adaf4a8ec1591444630fa8a12f040955b017ce10ca1321887e5",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.0.2",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.1.0",
     "changelog": [
-        "The form asks about the size chosen alone. The \"Also tell me about\" list of other sold-out sizes is gone; a post from a page cached before the update makes one request, for the size chosen. The REST API (source=api) still takes several items.",
-        "The hourly sweep sends an alert whose send job died only while its restock is open or its item is still in stock. Otherwise the request goes back to Waiting, in its place in line, with no email (1.0.1 sent such alerts even after the item had sold out again).",
-        "A cancelled restock no longer hides an item from the sweep, so stock that sells out and comes back at the same count, stock that isn't managed, and new requests are all seen again. Instead, a restock opens only when a wave would pick someone from the requests waiting now.",
-        "Sends that keep failing don't loop. While the Back in stock email is off in WooCommerce's settings, no restock opens and nobody is claimed. Requests whose sends all failed are held on their restock, so its later waves pass them over and the next restock tries them again; they keep their place in line and still count as Failed.",
-        "The sweep queues each stalled restock's wave as its own job, so one wave that throws can't stop the sweep.",
-        "Back in stock emails in a batch that mixes languages each get their subject and heading in their own shopper's language, and a send that throws restores the site's language.",
-        "A partly refunded order that is cancelled and then paid again, or a refunded order set back to Completed, counts its lines less what was refunded.",
-        "Sizes read 8.125″, not 8.125\", on the Requests and Restocks screens, in the Demand report, in the CSV exports and in the personal data export.",
-        "The plugin's Description no longer mentions several sizes in one ask."
+        "Ended restocks (Done or Cancelled) can be deleted from the Restocks screen, such as test restocks before launch. The screen is a list table like Requests, with a checkbox per ended restock and a Delete bulk action; an open restock has no checkbox and its ID is refused. A confirmation screen lists the restocks first, and works without JavaScript and by keyboard. Deleting removes the restock's row alone: its requests keep their state and place in line, and nobody is emailed."
     ]
 }
