@@ -1,12 +1,15 @@
 {
-    "version": "1.1.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.1.0/creative-restock-1.1.0.zip",
-    "sha256": "b98e84614f2d9adaf4a8ec1591444630fa8a12f040955b017ce10ca1321887e5",
+    "version": "1.1.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.1.1/creative-restock-1.1.1.zip",
+    "sha256": "319c0588eb55f21063c32da4a71be4bf8b529141f96fe816743a5791017188c4",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.1.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.1.1",
     "changelog": [
-        "Ended restocks (Done or Cancelled) can be deleted from the Restocks screen, such as test restocks before launch. The screen is a list table like Requests, with a checkbox per ended restock and a Delete bulk action; an open restock has no checkbox and its ID is refused. A confirmation screen lists the restocks first, and works without JavaScript and by keyboard. Deleting removes the restock's row alone: its requests keep their state and place in line, and nobody is emailed."
+        "Refusals on WooCommerce → Restock show as warnings or errors, not as success notices (WCAG 3.3.1): nothing chosen to delete, only an open restock chosen, a request that couldn't be added, and a CSV file that's missing or too big.",
+        "The bottom bulk-action selector on the Requests and Restocks lists works without JavaScript. WordPress reads only the top one and relies on its script to copy the bottom choice across.",
+        "The delete confirmation's Cancel, and the refusal when nothing can be deleted, return to the page of restocks the manager was on.",
+        "The Restocks list reads each item's name once per page and formats dates in one place."
     ]
 }
