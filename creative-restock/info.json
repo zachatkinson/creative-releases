@@ -1,16 +1,18 @@
 {
-    "version": "1.3.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.1/creative-restock-1.3.1.zip",
-    "sha256": "2d9d2e943d851b979c570f6b6e3a77373c3e9f0f02109ac10602fb2effb013e9",
+    "version": "1.3.2",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.2/creative-restock-1.3.2.zip",
+    "sha256": "81402b815eecc520bdc3613ef9695a5c314ef584b67fb15bcc47a3f94a741d7c",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.2",
     "changelog": [
-        "Trends counts an ask for each item a shopper asks for, a repeat of an open request too (once a day per request, so re-posting can't swell it), so demand isn't undercounted. Confirmations still count only new requests. The 1.3.0 backfill can't see repeats from before it.",
-        "The vendor digest and the vendor dashboard page name each item as its translation in the vendor's language (WPML, Polylang), falling back to the original. The digest's templates take a $names map (@version 1.3.1).",
-        "The shop's demand digest ends with \"And N more items.\" when it lists 20 of more; its templates take $more (@version 1.3.1).",
-        "Uninstall removes WooCommerce's saved settings for the plugin's six emails (woocommerce_crestock_*_settings).",
-        "The release workflow checks that RELEASES_TOKEN itself can write to the releases repo (a refused, invalid ref creation: 422 means it may), not its owner's role."
+        "A send job, first attempt or retry, sends each channel's alert once per request and restock however many times it runs: each channel claims the alert in channels_sent in one conditional UPDATE before it sends, and gives the claim back if the send fails. A retry loads only requests still waiting on their alert, so it skips one bought, unsubscribed or expired since (and takes a skipped email off the restock's count, once). A given-up channel is marked too, so a last attempt that runs twice counts its failure once, and the hourly sweep gives back a claim left by a send that died before it sent, so its next job sends. In 1.3.0 and 1.3.1 a retry that ran twice sent twice, and an email retry could reach a shopper who had bought after an add-on's text.",
+        "Schema::install() records the schema an upgrade came from, so activating 1.3.x over 1.2.x (which runs install()) starts the Trends backfill, as an update in place does.",
+        "crestock_item_discontinued fires once each time the Discontinued box is ticked, on the job's first run after it, even when that run ended nothing; later runs while the box stays ticked don't fire it (_crestock_discontinued_fired, removed on uninstall).",
+        "The Trends charts' top value and first and last periods are HTML text around the SVG, 13px at any width, instead of SVG text that drew at about 7px on a phone.",
+        "Trends: \"Orders from alerts\" is \"Sales from alerts\", the alert-to-order rate is the alert-to-sale rate (\"%s sale\" / \"%s sales\"), and the note says a sale counts within 14 days of its alert. The count is unchanged: one per alerted item bought, so one order with two alerted items counts 2. The CSV heads the column sales; the stored column keeps its name. Translated in fr_CA.",
+        "\"Back in stock: marketplace vendors\" shows on the settings only while Dokan is active. Saved values stay as they are.",
+        "Tests: unit tests pin Trends::rate, a weekly period that starts on the last day of a week, and the cent rounding in Trends and Demand. composer infection:integration mutates Sender, SalesTracker, DayRepository and Backfill against the integration suite, as Creative Stockroom's gate does: a pull request's changed files must reach 85%; the full run's first score, 65% (71% on covered code), is its floor until the backlog in docs/ROADMAP.md is cleared. Sender is at 86% (88% on covered code)."
     ]
 }
