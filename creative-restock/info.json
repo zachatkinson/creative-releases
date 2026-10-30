@@ -1,17 +1,16 @@
 {
-    "version": "1.3.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.0/creative-restock-1.3.0.zip",
-    "sha256": "a03a024f1961140fcdbbed954e2649bcf006816d415f9f63c536cedda3bbdb29",
+    "version": "1.3.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.1/creative-restock-1.3.1.zip",
+    "sha256": "2d9d2e943d851b979c570f6b6e3a77373c3e9f0f02109ac10602fb2effb013e9",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.1",
     "changelog": [
-        "Trends, a tab on WooCommerce → Restock: asks, confirmations, alerts sent, reminders sent, orders from alerts and their revenue, for 30 days (by day), 90 (by week) or 365 (by month), each as an inline SVG chart with a summary, the busiest period and a captioned table, plus the alert-to-order rate (marked not final for the last 14 days) and a CSV download. The totals are counted as things happen in crestock_days, which holds no personal data and outlives the requests. On upgrade a crestock_backfill_days job adds earlier totals from the requests and restocks on file, 500 at a time.",
-        "WPML and Polylang: requests, restocks, waiting counts and sales are kept on the item in the default language (wpml_object_id, pll_get_post), so a translation shares its original's line and count. Emails name and link the product in the request's language, falling back to the original. The first time either plugin is found, a crestock_languages job moves what earlier versions stored on translations (resuming where it stopped if interrupted), keeping the oldest request when an address waited on both and ending the other without an email.",
-        "Dokan (Lite and Pro): \"Vendor page\" adds a \"Back in stock\" page to the vendor dashboard listing the vendor's own sold-out items with waiting count, oldest request, value waiting, expected date and last restock; \"Vendor digest\" sends each vendor with shoppers waiting the counts for their own items each morning (crestock_vendor_digest), in their account's language. Both are off by default, and each reads only the vendor's own products. The digest goes out as one crestock_vendor_send job per vendor, once a day, and says how many items it leaves out after the first 20. Vendors never see addresses.",
-        "Hooks for add-ons, listed with their arguments in docs/HOOKS.md: crestock_form_fields, crestock_request_meta and crestock_alert_channels (channels next to email, each with its own send, retry and failed count on the restock), and the actions crestock_alert_sent, crestock_alert_failed, crestock_reminder_sent and crestock_item_discontinued. A unit test fails when the code has a hook the page doesn't list.",
-        "The personal data export and erase cover the new phone, sms_consent and meta columns, and the Requests CSV carries them.",
-        "The popup's Close button takes the shop's button colours, as Notify me does, so a theme's button colours no longer show beside them."
+        "Trends counts an ask for each item a shopper asks for, a repeat of an open request too (once a day per request, so re-posting can't swell it), so demand isn't undercounted. Confirmations still count only new requests. The 1.3.0 backfill can't see repeats from before it.",
+        "The vendor digest and the vendor dashboard page name each item as its translation in the vendor's language (WPML, Polylang), falling back to the original. The digest's templates take a $names map (@version 1.3.1).",
+        "The shop's demand digest ends with \"And N more items.\" when it lists 20 of more; its templates take $more (@version 1.3.1).",
+        "Uninstall removes WooCommerce's saved settings for the plugin's six emails (woocommerce_crestock_*_settings).",
+        "The release workflow checks that RELEASES_TOKEN itself can write to the releases repo (a refused, invalid ref creation: 422 means it may), not its owner's role."
     ]
 }
