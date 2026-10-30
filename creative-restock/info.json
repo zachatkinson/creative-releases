@@ -1,18 +1,19 @@
 {
-    "version": "1.3.2",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.2/creative-restock-1.3.2.zip",
-    "sha256": "81402b815eecc520bdc3613ef9695a5c314ef584b67fb15bcc47a3f94a741d7c",
+    "version": "1.3.3",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.3/creative-restock-1.3.3.zip",
+    "sha256": "f25d004c0634d33cf9bb657d191136e9c22b6fcff595f56667abfcfc087f2f00",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.2",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.3",
     "changelog": [
-        "A send job, first attempt or retry, sends each channel's alert once per request and restock however many times it runs: each channel claims the alert in channels_sent in one conditional UPDATE before it sends, and gives the claim back if the send fails. A retry loads only requests still waiting on their alert, so it skips one bought, unsubscribed or expired since (and takes a skipped email off the restock's count, once). A given-up channel is marked too, so a last attempt that runs twice counts its failure once, and the hourly sweep gives back a claim left by a send that died before it sent, so its next job sends. In 1.3.0 and 1.3.1 a retry that ran twice sent twice, and an email retry could reach a shopper who had bought after an add-on's text.",
-        "Schema::install() records the schema an upgrade came from, so activating 1.3.x over 1.2.x (which runs install()) starts the Trends backfill, as an update in place does.",
-        "crestock_item_discontinued fires once each time the Discontinued box is ticked, on the job's first run after it, even when that run ended nothing; later runs while the box stays ticked don't fire it (_crestock_discontinued_fired, removed on uninstall).",
-        "The Trends charts' top value and first and last periods are HTML text around the SVG, 13px at any width, instead of SVG text that drew at about 7px on a phone.",
-        "Trends: \"Orders from alerts\" is \"Sales from alerts\", the alert-to-order rate is the alert-to-sale rate (\"%s sale\" / \"%s sales\"), and the note says a sale counts within 14 days of its alert. The count is unchanged: one per alerted item bought, so one order with two alerted items counts 2. The CSV heads the column sales; the stored column keeps its name. Translated in fr_CA.",
-        "\"Back in stock: marketplace vendors\" shows on the settings only while Dokan is active. Saved values stay as they are.",
-        "Tests: unit tests pin Trends::rate, a weekly period that starts on the last day of a week, and the cent rounding in Trends and Demand. composer infection:integration mutates Sender, SalesTracker, DayRepository and Backfill against the integration suite, as Creative Stockroom's gate does: a pull request's changed files must reach 85%; the full run's first score, 65% (71% on covered code), is its floor until the backlog in docs/ROADMAP.md is cleared. Sender is at 86% (88% on covered code)."
+        "An add-on alert channel whose ID is a whole number (such as 123) is left out, as one with any other malformed ID is (a trailing newline too, which slipped through before), with a _doing_it_wrong notice naming it and why (once, not on every send), as for a repeated ID. PHP made the ID an integer key, so each send job stopped with a type error after its first email: the rest of its batch stayed claimed, and the hourly sweep sent them one job, and one email, at a time. After the update the hourly sweep queues the requests still claimed and sends them as usual. Other IDs, such as 2fa or 0123, work as before (docs/HOOKS.md).",
+        "A day for the daily totals, and an add-on's form field key, ending in a line break no longer pass their checks (PHP's $ allows one before the end).",
+        "Tests: new integration tests for SalesTracker (an order's lines and fees, a cancellation, partial and whole-line refunds to the fraction of a cent (five decimals too), a refund after a line was taken off, a request a crestock_request_bought listener moves, an order with no reference or a forged one) and Backfill (its start, paging and cutoff, to the second), a new day's totals in DayRepository, and in Sender a text-only retry and a last attempt on requests that left the line before it gave up. The full integration mutation run on the four classes kills 450 of 483 mutants, 93.2% (93.4% on covered code; it was 65% and 71%), and its floor in infection-integration.json is back to 85%; each mutant left is in docs/MUTANTS.md with the reason it survives.",
+        "Tests: the integration tests share one set of helpers for alerted requests, requests stored by an older version (in one statement), orders, refunds and the daily totals, which every test starts empty and sums over every day.",
+        "Attribution::match() takes the request an order's link names as ?int (null when none) instead of int with 0 for none; the plugin is its only caller.",
+        "Sender drops a branch for a request no channel takes, which no request could reach (email takes every one).",
+        "Release: a tag is published only when it is the merge commit of a pull request into main whose integration mutation run, by GitHub Actions, passed.",
+        "CI: the full integration mutation run is weekly and by hand, not on every push and release; a pull request still holds all four classes to 85% when it changes any of them or anything they run with (other code, blocks, templates or translations, the integration tests, the gate's config or CI job, the pinned plugins or the dependencies), since they call each other; one with nothing to mutate sets nothing up. A release no longer waits half an hour for it. composer test:gates checks what both gates decide."
     ]
 }
