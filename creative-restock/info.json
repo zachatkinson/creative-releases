@@ -1,20 +1,17 @@
 {
-    "version": "1.2.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.2.1/creative-restock-1.2.1.zip",
-    "sha256": "5659159a1134867bd3f1dc9f1c1601496419ef95891877bad0ff633451f613cc",
+    "version": "1.3.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.0/creative-restock-1.3.0.zip",
+    "sha256": "a03a024f1961140fcdbbed954e2649bcf006816d415f9f63c536cedda3bbdb29",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.2.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.0",
     "changelog": [
-        "The popup takes the page's colours: its text colour is inherited from the form, and its background is the nearest one behind the form, up to the body's. Its title read #f4f1ea on white on a dark page before (WCAG 1.4.3).",
-        "The popup leaves the page's status line in place, with its text, so the page doesn't shift and still says which size is sold out after it closes. The dialog has its own status line for the reply and errors.",
-        "Set button colours win over the theme's WooCommerce button rules (!important, only while a colour is set) in the normal, hover, focus and disabled states, so the shopper sees the pair the contrast check passed.",
-        "The Requests list keeps a search with a plus sign (restock-test+120a) through Mark waiting, Unsubscribe, Delete and the confirmation's Cancel: RestockPage::url() encodes its values.",
-        "The sold-out option chooser's legend is \"Width (sold out)\", or \"Sold-out options\" for a product with more than one attribute, so it doesn't share a name with the picker's group.",
-        "The waiting count's sentence comes from wp.i18n._n() for the count, with the plugin's JSON translations, so languages with three or more plural forms read right.",
-        "A move to an alternative whose new request throws gives its claim back, so the link doesn't read as used.",
-        "\"Lifetime spend, high to low\" replaces \"Lifetime spend, highest first\".",
-        "The Back in stock, Still in stock and No longer available emails send through one RestockEmail::sendItem()."
+        "Trends, a tab on WooCommerce → Restock: asks, confirmations, alerts sent, reminders sent, orders from alerts and their revenue, for 30 days (by day), 90 (by week) or 365 (by month), each as an inline SVG chart with a summary, the busiest period and a captioned table, plus the alert-to-order rate (marked not final for the last 14 days) and a CSV download. The totals are counted as things happen in crestock_days, which holds no personal data and outlives the requests. On upgrade a crestock_backfill_days job adds earlier totals from the requests and restocks on file, 500 at a time.",
+        "WPML and Polylang: requests, restocks, waiting counts and sales are kept on the item in the default language (wpml_object_id, pll_get_post), so a translation shares its original's line and count. Emails name and link the product in the request's language, falling back to the original. The first time either plugin is found, a crestock_languages job moves what earlier versions stored on translations (resuming where it stopped if interrupted), keeping the oldest request when an address waited on both and ending the other without an email.",
+        "Dokan (Lite and Pro): \"Vendor page\" adds a \"Back in stock\" page to the vendor dashboard listing the vendor's own sold-out items with waiting count, oldest request, value waiting, expected date and last restock; \"Vendor digest\" sends each vendor with shoppers waiting the counts for their own items each morning (crestock_vendor_digest), in their account's language. Both are off by default, and each reads only the vendor's own products. The digest goes out as one crestock_vendor_send job per vendor, once a day, and says how many items it leaves out after the first 20. Vendors never see addresses.",
+        "Hooks for add-ons, listed with their arguments in docs/HOOKS.md: crestock_form_fields, crestock_request_meta and crestock_alert_channels (channels next to email, each with its own send, retry and failed count on the restock), and the actions crestock_alert_sent, crestock_alert_failed, crestock_reminder_sent and crestock_item_discontinued. A unit test fails when the code has a hook the page doesn't list.",
+        "The personal data export and erase cover the new phone, sms_consent and meta columns, and the Requests CSV carries them.",
+        "The popup's Close button takes the shop's button colours, as Notify me does, so a theme's button colours no longer show beside them."
     ]
 }
