@@ -1,0 +1,16 @@
+{
+    "version": "1.0.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.1/creative-reviews-for-woocommerce-1.0.1.zip",
+    "sha256": "1e3ae3a50310700439ecc48674687a6fde266429afe029dcedf3154d7b093f40",
+    "requires": "6.9",
+    "requires_php": "8.3",
+    "tested": "7.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.1",
+    "changelog": [
+        "Unchosen stars in the rating input are outlines in the text colour, 3:1 against light and dark pages alike.",
+        "The focus ring on the stars stays the text colour before and after a rating is chosen.",
+        "The rating radios run 1 to 5 in the page, as drawn: Tab lands on 1 and Right moves to 2 (Left on right-to-left pages); the fill uses :has().",
+        "The photo picker's own text takes the form's colour, readable on dark pages.",
+        "End-to-end checks run on a light page and a dark one, with axe and contrast measured from computed colours."
+    ]
+}
