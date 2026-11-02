@@ -1,19 +1,23 @@
 {
-    "version": "1.0.2",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.2/creative-reviews-for-woocommerce-1.0.2.zip",
-    "sha256": "2025a56646ef3865c7193a6e96e3bf85854bcae1e5a12615116415921ed0161e",
+    "version": "1.0.3",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.3/creative-reviews-for-woocommerce-1.0.3.zip",
+    "sha256": "3121cb1c71c43777bf0d341d3d25bdf561ab4ada1bfccfcb385e2cee3d49dcc7",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.2",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.3",
     "changelog": [
-        "The reviews screen (Products → Reviews) gains a Details column with each review's photos (pending ones shown to moderators only), badges, source, reports, investigation and redactions, and the views Reported and Under investigation.",
-        "Reject in place of Trash and Spam: a review is rejected only with a reason from the fixed list, the same for every rating. It goes to the Trash with its reason, the moderator and the time in its log, and its photos are deleted. WordPress's own Trash, Spam and Delete for a published or waiting review are refused on the comments screen (links, bulk actions, keyboard shortcuts), the edit form and the comments REST route; a rejected review can still be restored or deleted for good.",
-        "Redact in place of Edit: a moderator blanks a passage of personal details, in its words or its title, which becomes \"[removed: personal information]\" in the review's language; the review notes that part was removed, and the log keeps who and when, never the words. A review's words can't otherwise be edited, from any screen or route.",
-        "Clear investigation and Resolve reports. Approving a review under investigation clears it.",
-        "POST creative-reviews/v1/reviews/<id>/moderate (approve, reject with a reason, clear, redact, resolve) and GET creative-reviews/v1/reports, for users who can moderate comments.",
-        "A test scans the moderation code for anything that reads a rating, and another posts 1 to 5 stars and checks each is treated alike.",
-        "Fixed: 1.0.1 turned off WooCommerce's own review request although the plugin doesn't send requests yet. WooCommerce's request goes as the store set it until the plugin's own requests ship.",
-        "Fixed: \"About our reviews\" no longer says every buyer is asked for a review."
+        "Review requests: when an order is Completed, one request is queued in Action Scheduler for a set number of days later (10 by default), plus 7 when it ships abroad and any extra days its products' categories ask for. With \"when delivered\", a tracking plugin's creviews_order_delivered times it from delivery, falling back to Completed + 21 days. An order is never queued twice.",
+        "At send time everything is checked again: the order still Completed and paid within two years, the address not unsubscribed, the store's address set, and products left that are published, not fully refunded and not yet reviewed by the buyer. Otherwise the request is marked not sent with the reason on the order, or done once everything is reviewed.",
+        "Up to two reminders (one by default), 7 days apart, only while products are unreviewed and listing only those.",
+        "The request and the reminder are WooCommerce emails (WooCommerce → Settings → Emails) in the store's template and the order's language, HTML or plain text, with a template themes can override. Each lists the products with a button to the review page, says why the buyer is getting it, names the store and its mailing address, links to unsubscribe, and carries List-Unsubscribe and, on HTTPS sites, List-Unsubscribe-Post: List-Unsubscribe=One-Click. Each send is logged on the order with its consent basis and the address's hash.",
+        "The review page (/?creviews-review=<token>, signed, 180 days): a form for each product still to review and a list of those already reviewed, never cached or indexed. Reviews through it are verified and tied to the order.",
+        "Unsubscribe (/?creviews-unsubscribe=<token>): opening it shows a button and changes nothing, so prefetching and link scanners unsubscribe no one; the button's POST, or a mail app's one-click POST, adds the address to the unsubscribe list and cancels everything queued for it.",
+        "A refund of every line, a cancellation, a failed order or a deleted one cancels the request; a partial refund leaves the refunded lines out.",
+        "A failed send is tried again after 15 minutes and 2 hours, then marked failed with an order note, in the order's box and on the settings page.",
+        "The Review request box on the order screen (order tables or posts storage): state, next email, sends, and Send now, Cancel and Reschedule. Bulk actions on the orders list send, cancel or reschedule from the settings.",
+        "Settings under WooCommerce → Settings → Products → Reviews, with a status line (the store's address, the last failure, unsubscribes, HTTPS for one-click), and \"Extra days before asking for a review\" on product categories.",
+        "WooCommerce's own review request is told not to send while the plugin's requests are on, so no buyer gets two; \"About our reviews\" says every buyer is asked.",
+        "New hooks: creviews_should_send_request, creviews_order_locale, creviews_unsubscribed."
     ]
 }
