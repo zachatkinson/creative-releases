@@ -1,16 +1,19 @@
 {
-    "version": "1.0.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.1/creative-reviews-for-woocommerce-1.0.1.zip",
-    "sha256": "1e3ae3a50310700439ecc48674687a6fde266429afe029dcedf3154d7b093f40",
+    "version": "1.0.2",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.2/creative-reviews-for-woocommerce-1.0.2.zip",
+    "sha256": "2025a56646ef3865c7193a6e96e3bf85854bcae1e5a12615116415921ed0161e",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.2",
     "changelog": [
-        "Unchosen stars in the rating input are outlines in the text colour, 3:1 against light and dark pages alike.",
-        "The focus ring on the stars stays the text colour before and after a rating is chosen.",
-        "The rating radios run 1 to 5 in the page, as drawn: Tab lands on 1 and Right moves to 2 (Left on right-to-left pages); the fill uses :has().",
-        "The photo picker's own text takes the form's colour, readable on dark pages.",
-        "End-to-end checks run on a light page and a dark one, with axe and contrast measured from computed colours."
+        "The reviews screen (Products → Reviews) gains a Details column with each review's photos (pending ones shown to moderators only), badges, source, reports, investigation and redactions, and the views Reported and Under investigation.",
+        "Reject in place of Trash and Spam: a review is rejected only with a reason from the fixed list, the same for every rating. It goes to the Trash with its reason, the moderator and the time in its log, and its photos are deleted. WordPress's own Trash, Spam and Delete for a published or waiting review are refused on the comments screen (links, bulk actions, keyboard shortcuts), the edit form and the comments REST route; a rejected review can still be restored or deleted for good.",
+        "Redact in place of Edit: a moderator blanks a passage of personal details, in its words or its title, which becomes \"[removed: personal information]\" in the review's language; the review notes that part was removed, and the log keeps who and when, never the words. A review's words can't otherwise be edited, from any screen or route.",
+        "Clear investigation and Resolve reports. Approving a review under investigation clears it.",
+        "POST creative-reviews/v1/reviews/<id>/moderate (approve, reject with a reason, clear, redact, resolve) and GET creative-reviews/v1/reports, for users who can moderate comments.",
+        "A test scans the moderation code for anything that reads a rating, and another posts 1 to 5 stars and checks each is treated alike.",
+        "Fixed: 1.0.1 turned off WooCommerce's own review request although the plugin doesn't send requests yet. WooCommerce's request goes as the store set it until the plugin's own requests ship.",
+        "Fixed: \"About our reviews\" no longer says every buyer is asked for a review."
     ]
 }
