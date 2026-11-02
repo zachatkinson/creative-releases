@@ -1,23 +1,15 @@
 {
-    "version": "1.0.3",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.3/creative-reviews-for-woocommerce-1.0.3.zip",
-    "sha256": "3121cb1c71c43777bf0d341d3d25bdf561ab4ada1bfccfcb385e2cee3d49dcc7",
+    "version": "1.0.4",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.4/creative-reviews-for-woocommerce-1.0.4.zip",
+    "sha256": "3cb91140b54bc70f8fd80a6014a135cb1a5a76fac8ebe85062b995edce1a51e4",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.3",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.4",
     "changelog": [
-        "Review requests: when an order is Completed, one request is queued in Action Scheduler for a set number of days later (10 by default), plus 7 when it ships abroad and any extra days its products' categories ask for. With \"when delivered\", a tracking plugin's creviews_order_delivered times it from delivery, falling back to Completed + 21 days. An order is never queued twice.",
-        "At send time everything is checked again: the order still Completed and paid within two years, the address not unsubscribed, the store's address set, and products left that are published, not fully refunded and not yet reviewed by the buyer. Otherwise the request is marked not sent with the reason on the order, or done once everything is reviewed.",
-        "Up to two reminders (one by default), 7 days apart, only while products are unreviewed and listing only those.",
-        "The request and the reminder are WooCommerce emails (WooCommerce → Settings → Emails) in the store's template and the order's language, HTML or plain text, with a template themes can override. Each lists the products with a button to the review page, says why the buyer is getting it, names the store and its mailing address, links to unsubscribe, and carries List-Unsubscribe and, on HTTPS sites, List-Unsubscribe-Post: List-Unsubscribe=One-Click. Each send is logged on the order with its consent basis and the address's hash.",
-        "The review page (/?creviews-review=<token>, signed, 180 days): a form for each product still to review and a list of those already reviewed, never cached or indexed. Reviews through it are verified and tied to the order.",
-        "Unsubscribe (/?creviews-unsubscribe=<token>): opening it shows a button and changes nothing, so prefetching and link scanners unsubscribe no one; the button's POST, or a mail app's one-click POST, adds the address to the unsubscribe list and cancels everything queued for it.",
-        "A refund of every line, a cancellation, a failed order or a deleted one cancels the request; a partial refund leaves the refunded lines out.",
-        "A failed send is tried again after 15 minutes and 2 hours, then marked failed with an order note, in the order's box and on the settings page.",
-        "The Review request box on the order screen (order tables or posts storage): state, next email, sends, and Send now, Cancel and Reschedule. Bulk actions on the orders list send, cancel or reschedule from the settings.",
-        "Settings under WooCommerce → Settings → Products → Reviews, with a status line (the store's address, the last failure, unsubscribes, HTTPS for one-click), and \"Extra days before asking for a review\" on product categories.",
-        "WooCommerce's own review request is told not to send while the plugin's requests are on, so no buyer gets two; \"About our reviews\" says every buyer is asked.",
-        "New hooks: creviews_should_send_request, creviews_order_locale, creviews_unsubscribed."
+        "One set of review markup on the product page: WooCommerce's Product carries the aggregateRating (WooCommerce's average and counts) and the reviews on the list's first page (at most 10) as the page shows them, and WooCommerce's separate review entries are dropped. Held, investigated, rejected and unmatched imported reviews aren't included; with nothing rated, there's no aggregate.",
+        "The Google Merchant Center product review feed (schema 2.4), off until \"Build the feed\" is on: built daily in Action Scheduler, 200 reviews a batch, into uploads/creviews-feed/ behind a deny-all guard, and served at /?creviews-feed=<key> with Last-Modified and 304s. Each review carries its reviewer's display name, time, title, words, address, rating, photos, language, verified purchase, incentive, collection method and order, and its product's GTIN (checked by its check digit), SKU, MPN (_creviews_mpn) and WooCommerce brand. Staff reviews and reviews without words are left out.",
+        "The settings show the feed's reviews against Google's 50, the last build and fetch, the feed's address, the reviewed products missing a GTIN or brand, and a warning when the site's address can't go in a feed.",
+        "New hook: creviews_feed_identifiers."
     ]
 }
