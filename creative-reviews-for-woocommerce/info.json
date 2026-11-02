@@ -1,15 +1,22 @@
 {
-    "version": "1.0.4",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.4/creative-reviews-for-woocommerce-1.0.4.zip",
-    "sha256": "3cb91140b54bc70f8fd80a6014a135cb1a5a76fac8ebe85062b995edce1a51e4",
+    "version": "1.0.5",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.5/creative-reviews-for-woocommerce-1.0.5.zip",
+    "sha256": "fb8f76dc81b0165df5cdd776ef52640477c2c5476c3475e9b156da92f2f8a2f3",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.4",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.5",
     "changelog": [
-        "One set of review markup on the product page: WooCommerce's Product carries the aggregateRating (WooCommerce's average and counts) and the reviews on the list's first page (at most 10) as the page shows them, and WooCommerce's separate review entries are dropped. Held, investigated, rejected and unmatched imported reviews aren't included; with nothing rated, there's no aggregate.",
-        "The Google Merchant Center product review feed (schema 2.4), off until \"Build the feed\" is on: built daily in Action Scheduler, 200 reviews a batch, into uploads/creviews-feed/ behind a deny-all guard, and served at /?creviews-feed=<key> with Last-Modified and 304s. Each review carries its reviewer's display name, time, title, words, address, rating, photos, language, verified purchase, incentive, collection method and order, and its product's GTIN (checked by its check digit), SKU, MPN (_creviews_mpn) and WooCommerce brand. Staff reviews and reviews without words are left out.",
-        "The settings show the feed's reviews against Google's 50, the last build and fetch, the feed's address, the reviewed products missing a GTIN or brand, and a warning when the site's address can't go in a feed.",
-        "New hook: creviews_feed_identifiers."
+        "Import from Photo Reviews (WooCommerce → Reviews tools): its reviews are already WooCommerce's, so they stay where they are, and its photos (reviews-images) and earned coupons (coupon_for_reviews) join them. WooCommerce's counts don't move. The report gives reviews and photos taken in against those found.",
+        "Import a CSV file from Customer Reviews for WooCommerce, from Judge.me, or from this plugin's export: reviews come in published or held as they were, verified only when the email matches a completed order for the product, with the shop's replies (from the admin who ran it) and their photos, downloaded through WordPress's safe request while the import runs and re-encoded like uploads. Imports run in Action Scheduler batches, one at a time, and can be cancelled. Importing the same file again adds nothing, and the store's own export finds its reviews still there. The report counts rows that didn't come in by reason.",
+        "Export every published and held review as CSV (formula-safe), with the order ID and the shop's reply; importing it gives the same reviews back.",
+        "wp creviews import, export, recount, requests list|send|cancel and feed build.",
+        "GET creative-reviews/v1/products/<id>/summary, and the abilities creative-reviews/list-reviews, get-summary, moderate-review, send-request, cancel-request and export-reviews, each with the capability of the screen or route it mirrors. Every admin route and ability has a test that a user without it is refused.",
+        "Personal data: WordPress's exporter gets an email's reviews in any status, their photos, votes and reports, the orders' review requests and send logs, and the unsubscribe; the eraser anonymises the reviews (the words and rating stay), deletes their photos and the send logs, and keeps the address unsubscribed as a hash. Suggested privacy policy text.",
+        "A daily retention job deletes send logs older than \"Years to keep send logs\" (3 by default, under Privacy), clears old unsubscribes' sources, and deletes private photos no review names.",
+        "Uninstalling removes the two tables, the order, product and category meta, the transients, the private folder and the feed; the plugin's comment meta too when CREVIEWS_REMOVE_ALL_DATA is defined.",
+        "Canadian French, complete.",
+        "Fixed: the review form was wider than the page at 320 px (400% zoom); it reflows now.",
+        "Rewards aren't built; none are given."
     ]
 }
