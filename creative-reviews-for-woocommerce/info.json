@@ -1,15 +1,12 @@
 {
-    "version": "1.0.8",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.8/creative-reviews-for-woocommerce-1.0.8.zip",
-    "sha256": "aff28a53063c55d021bf3046e33c090e5f73e1cb9f27a98725d14a96c50746ee",
+    "version": "1.0.9",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.9/creative-reviews-for-woocommerce-1.0.9.zip",
+    "sha256": "29bfaa6fb2bf962684973d95eba208a68475aa60fa8a8333a69d89c20709e25b",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.8",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.9",
     "changelog": [
-        "Two rejection reasons: Duplicate (the same review posted twice) and Test review (one the store posted to try the site). They're offered on the reject screen, the REST route and the moderate-review ability, logged and shown like the other six, translated for fr_CA, and named in \"About our reviews\".",
-        "The moderation pages have a title: \"Reject a review\", \"Redact a review\" and so on, in place of the site's name alone (WCAG 2.4.2).",
-        "On WordPress's Edit Comment screen, a published or waiting review's Move to Trash link, which led to a refusal, is replaced by its Reject link.",
-        "The readme's security contact is zach.atkinson85@gmail.com. 1.0.7 gave a no-reply address that can't receive a report."
+        "The rating bars show from 6 reviews again, as Baymard's research advises; 1.0.6 showed them from the first."
     ]
 }
