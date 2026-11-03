@@ -1,15 +1,20 @@
 {
-    "version": "1.10.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.10.1/creative-tracking-1.10.1.zip",
-    "sha256": "fe9292b5a005ffe159c59e4bf69e80362fd45dd525c092cbc606c1473296e385",
+    "version": "1.11.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.0/creative-tracking-1.11.0.zip",
+    "sha256": "4ad8f528dd879d9f88af233205dfb3c5577022ae5a1de0a8bac3fd350b20d729",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.10.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.0",
     "changelog": [
-        "Ship orders: the list is a card with its heading and the page-wide status choice on top, each order's status as a label, roomier fields, and Save kept in view at the bottom while you scroll.",
-        "Import tracking: the form is two cards, Rows to import and Options, with the columns explained in a list you can open; the preview shows each row's result beside a coloured dot, with Apply in the card's footer.",
-        "Shipping report: the period as a segmented control, the summary as figures, each table in a card; wide tables scroll inside their card on a phone.",
-        "The order screen's Tracking box shows each parcel as a small card."
+        "The SMS provider, account, secret and sender are saved in the account Creative Branding's plugins share (creativebranding_sms), so a shop running Creative Restock too fills them in once; the Text messages settings say so. Which texts go, the checkout box and the opt-out line stay Tracking's own settings.",
+        "On update, the provider settings move to the shared account by themselves, unless Creative Restock already set one up there; the old settings are kept, so going back to 1.10.1 still sends. Uninstalling lets go of the shared account and deletes it only when no other plugin uses it.",
+        "The provider code is the shared creativebranding/sms package, bundled in src/Vendor/Sms (copied by tools/sms-sync.sh). The ctracking_sms_gateway filter now takes the package's SmsGateway, whose send() has a third parameter (a template's values) and whose results also carry provider, code and reason.",
+        "Reasons a text wasn't sent are still shown in the shop's language, with the same wording.",
+        "Texts count as set up only when the shared account can send them (Account::ready()): a sender is needed except with ClickSend. Before, an account without one counted as set up and every text failed.",
+        "CTRACKING_SMS_TOKEN takes the place of the secret for Tracking only; the settings field says so.",
+        "CreativeBranding\\Tracking\\Sms\\SmsGateway, the 1.10 interface for the ctracking_sms_gateway filter. A gateway built on it still sends: it is wrapped in Sms\\LegacyGateway. Implement CreativeBranding\\Tracking\\Vendor\\Sms\\SmsGateway instead.",
+        "Updating from 1.10 when Creative Restock had set up WhatsApp only on the shared account (no SMS sender): with the same provider and account, Tracking's sender is added to it, so texts keep going; with a different account it is left alone and texts wait for a sender instead of failing.",
+        "ctracking_version is never lowered when an older version runs."
     ]
 }
