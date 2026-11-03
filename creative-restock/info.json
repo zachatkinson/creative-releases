@@ -1,19 +1,17 @@
 {
-    "version": "1.3.3",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.3.3/creative-restock-1.3.3.zip",
-    "sha256": "f25d004c0634d33cf9bb657d191136e9c22b6fcff595f56667abfcfc087f2f00",
+    "version": "1.5.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.5.0/creative-restock-1.5.0.zip",
+    "sha256": "d9e67c6616a8ba9b5297ef8920736689062aee71d5a7ffcbb4d869cfffdb4a6f",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.3.3",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.5.0",
     "changelog": [
-        "An add-on alert channel whose ID is a whole number (such as 123) is left out, as one with any other malformed ID is (a trailing newline too, which slipped through before), with a _doing_it_wrong notice naming it and why (once, not on every send), as for a repeated ID. PHP made the ID an integer key, so each send job stopped with a type error after its first email: the rest of its batch stayed claimed, and the hourly sweep sent them one job, and one email, at a time. After the update the hourly sweep queues the requests still claimed and sends them as usual. Other IDs, such as 2fa or 0123, work as before (docs/HOOKS.md).",
-        "A day for the daily totals, and an add-on's form field key, ending in a line break no longer pass their checks (PHP's $ allows one before the end).",
-        "Tests: new integration tests for SalesTracker (an order's lines and fees, a cancellation, partial and whole-line refunds to the fraction of a cent (five decimals too), a refund after a line was taken off, a request a crestock_request_bought listener moves, an order with no reference or a forged one) and Backfill (its start, paging and cutoff, to the second), a new day's totals in DayRepository, and in Sender a text-only retry and a last attempt on requests that left the line before it gave up. The full integration mutation run on the four classes kills 450 of 483 mutants, 93.2% (93.4% on covered code; it was 65% and 71%), and its floor in infection-integration.json is back to 85%; each mutant left is in docs/MUTANTS.md with the reason it survives.",
-        "Tests: the integration tests share one set of helpers for alerted requests, requests stored by an older version (in one statement), orders, refunds and the daily totals, which every test starts empty and sums over every day.",
-        "Attribution::match() takes the request an order's link names as ?int (null when none) instead of int with 0 for none; the plugin is its only caller.",
-        "Sender drops a branch for a request no channel takes, which no request could reach (email takes every one).",
-        "Release: a tag is published only when it is the merge commit of a pull request into main whose integration mutation run, by GitHub Actions, passed.",
-        "CI: the full integration mutation run is weekly and by hand, not on every push and release; a pull request still holds all four classes to 85% when it changes any of them or anything they run with (other code, blocks, templates or translations, the integration tests, the gate's config or CI job, the pinned plugins or the dependencies), since they call each other; one with nothing to mutate sets nothing up. A release no longer waits half an hour for it. composer test:gates checks what both gates decide."
+        "Text messages and WhatsApp (Modules\\Sms). An optional mobile number on the form with its own unticked consent box; alerts and reminders go by text or WhatsApp (approved Twilio templates) next to email, in the shopper's language. Consent is kept per channel, so a shop switching from texts to WhatsApp messages nobody who agreed only to the other. A STOP reply removes the number. Providers: Twilio, Vonage, Plivo, Brevo and ClickSend, through the shared creativebranding/sms package (copied into src/Vendor/Sms by tools/sms-sync.sh); the account is shared with Creative Shipment Tracking 1.11.0 and later.",
+        "Team alerts (Modules\\TeamAlerts) to Slack, Discord, Microsoft Teams or a webhook signed with HMAC-SHA256: a restock detected or ended, demand reaching a threshold (once per crossing), and the morning digest. Item names are escaped for each destination's markup; shoppers' details are never sent.",
+        "Marketing sync (Modules\\MarketingSync) to Klaviyo, Mailchimp or MailerLite for shoppers who ticked the marketing box and confirmed, from a background job. Unsubscribes go both ways where the service allows (/creative-restock/v1/marketing/{secret}, signatures checked).",
+        "Hooks: crestock_sms_gateway, crestock_restock_ended, crestock_marketing_withdrawn.",
+        "Unsubscribing from every back-in-stock email also withdraws marketing consent (RequestService::withdrawMarketing()).",
+        "Uninstall removes the modules' options, jobs and marks, and the shared SMS account once no plugin uses it."
     ]
 }
