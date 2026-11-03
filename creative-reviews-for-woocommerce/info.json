@@ -1,17 +1,16 @@
 {
-    "version": "1.0.6",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.6/creative-reviews-for-woocommerce-1.0.6.zip",
-    "sha256": "f239aa6e65b6fbe7ae00a2c158ab783a8fb9cde365a9d500a86857bd9e31e21c",
+    "version": "1.0.7",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.7/creative-reviews-for-woocommerce-1.0.7.zip",
+    "sha256": "39d6ad51f8a71186d5fd3562f486048e7470875b0234a0ee22029f939c2f023d",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.6",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.7",
     "changelog": [
-        "Photos on a site whose image editor writes AVIF or WebP (image_editor_output_format). The private store used to refuse the .avif file: the moderation screen showed a broken image, and approving published the review without its photo and said nothing. The private store, the admin preview, the publisher and imports now take every format WordPress's editors write, and AVIF uploads are accepted where the server reads them. Tested with JPEG mapped to AVIF and to WebP: the photo goes in clean, shows to moderators, and is published with its sizes, with no GPS or camera data in any file.",
-        "A photo that fails to publish is no longer lost. It stays pending and private, and is shown in four places: a note in the review's details with a Publish photos action, a \"Photos not published\" view, a line on the settings page and an admin notice. A photo whose file was gone is logged on the review.",
-        "After a review is sent, the thank-you is announced: it takes the fields' place and the focus, and the status region stays on the page.",
-        "The rating bars show from the first review, not from six. A bar with no reviews is disabled.",
-        "Photos are shrunk in the browser to the largest size the server keeps (2048 px on the long side) before they go up. The original goes when the browser can't shrink it, and the server still re-encodes every photo.",
-        "A Settings link on the Plugins screen opens WooCommerce → Settings → Products → Reviews."
+        "The rating bars' screen-reader text is right in the singular and the plural: \"Show 0 reviews with 1 star\", \"Show 1 review with 2 stars\". Each star has its own sentence for translators, and fr_CA is updated.",
+        "The photo strip's photos say whose they are (\"Photo from Test R.'s review\") instead of \"Photo from a review\", as they do in their reviews.",
+        "A product page with photos stays within its five queries: the strip's photos load with the page's.",
+        "readme.txt and the new README.md give the address for reporting a vulnerability. Releases now fail while the placeholder is there.",
+        "No GitHub attestation while the source repository is private. The manifest's SHA-256 and the CycloneDX SBOM attached to each release cover the check."
     ]
 }
