@@ -1,16 +1,15 @@
 {
-    "version": "1.0.7",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.7/creative-reviews-for-woocommerce-1.0.7.zip",
-    "sha256": "39d6ad51f8a71186d5fd3562f486048e7470875b0234a0ee22029f939c2f023d",
+    "version": "1.0.8",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.8/creative-reviews-for-woocommerce-1.0.8.zip",
+    "sha256": "aff28a53063c55d021bf3046e33c090e5f73e1cb9f27a98725d14a96c50746ee",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.7",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.8",
     "changelog": [
-        "The rating bars' screen-reader text is right in the singular and the plural: \"Show 0 reviews with 1 star\", \"Show 1 review with 2 stars\". Each star has its own sentence for translators, and fr_CA is updated.",
-        "The photo strip's photos say whose they are (\"Photo from Test R.'s review\") instead of \"Photo from a review\", as they do in their reviews.",
-        "A product page with photos stays within its five queries: the strip's photos load with the page's.",
-        "readme.txt and the new README.md give the address for reporting a vulnerability. Releases now fail while the placeholder is there.",
-        "No GitHub attestation while the source repository is private. The manifest's SHA-256 and the CycloneDX SBOM attached to each release cover the check."
+        "Two rejection reasons: Duplicate (the same review posted twice) and Test review (one the store posted to try the site). They're offered on the reject screen, the REST route and the moderate-review ability, logged and shown like the other six, translated for fr_CA, and named in \"About our reviews\".",
+        "The moderation pages have a title: \"Reject a review\", \"Redact a review\" and so on, in place of the site's name alone (WCAG 2.4.2).",
+        "On WordPress's Edit Comment screen, a published or waiting review's Move to Trash link, which led to a refusal, is replaced by its Reject link.",
+        "The readme's security contact is zach.atkinson85@gmail.com. 1.0.7 gave a no-reply address that can't receive a report."
     ]
 }
