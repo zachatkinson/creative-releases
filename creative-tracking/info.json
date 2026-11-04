@@ -1,15 +1,13 @@
 {
-    "version": "1.11.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.1/creative-tracking-1.11.1.zip",
-    "sha256": "cd9f19086f7edc74db5aabcdab81533dd8ba6807860f91b1b93d1d0c68fc1e46",
+    "version": "1.11.2",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.2/creative-tracking-1.11.2.zip",
+    "sha256": "b553b2127866385a0d2003cee4997e85bfff8fa9f6a84fc3748ef9acd6072124",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.2",
     "changelog": [
-        "While text messages are switched on but the shared account lacks something they need (the account, the secret or the sender), the Text messages settings say what at the top, and WooCommerce's Settings and Orders screens show a warning linked to them, to users who can manage WooCommerce. No texts are sent and the checkout box stays hidden until it is filled in. A change on Creative Restock's page, or an update leaving a WhatsApp-only account from Restock as it was, can cause it. Settings::smsMissing() lists what is missing.",
-        "While the shared account has a WhatsApp number, the SMS provider field says Creative Restock sends WhatsApp through that Twilio account, and that another provider stops it.",
-        "A test text that can't be sent names what is missing (for example the sender), instead of always asking for the account and secret.",
-        "The Secret field has autocomplete=\"new-password\", so a browser's password manager doesn't fill in a saved WordPress login as the provider's secret."
+        "The bundled creativebranding/sms is v1.1.0. Settings::smsMissing() is now the package's Account::missing(), with CTRACKING_SMS_TOKEN in the secret's place, so the readiness rule lives in one place for every Creative plugin. No change in behaviour.",
+        "phpcs.xml: the vendor/ exclude is case-sensitive and anchored to a folder, and src/Vendor/ (the package's copy, linted in its own repository) is excluded on purpose, with a comment saying why."
     ]
 }
