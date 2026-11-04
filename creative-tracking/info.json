@@ -1,13 +1,12 @@
 {
-    "version": "1.11.2",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.2/creative-tracking-1.11.2.zip",
-    "sha256": "b553b2127866385a0d2003cee4997e85bfff8fa9f6a84fc3748ef9acd6072124",
+    "version": "1.11.3",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.3/creative-tracking-1.11.3.zip",
+    "sha256": "72717d09907dac1b821a9a9f4ad7e7e5aa4abd595e379bbb83d085d9b7a37ec7",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.2",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.3",
     "changelog": [
-        "The bundled creativebranding/sms is v1.1.0. Settings::smsMissing() is now the package's Account::missing(), with CTRACKING_SMS_TOKEN in the secret's place, so the readiness rule lives in one place for every Creative plugin. No change in behaviour.",
-        "phpcs.xml: the vendor/ exclude is case-sensitive and anchored to a folder, and src/Vendor/ (the package's copy, linted in its own repository) is excluded on purpose, with a comment saying why."
+        "Dashboard → Updates → Check again offers a new release on the first click. Before, WordPress read the cached release information before the plugin cleared it, so a new release showed only on a second click or after the 12-hour cache ran out."
     ]
 }
