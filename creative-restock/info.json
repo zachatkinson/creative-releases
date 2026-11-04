@@ -1,22 +1,15 @@
 {
-    "version": "1.6.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.6.0/creative-restock-1.6.0.zip",
-    "sha256": "743086557892b80c8afbbec5ddba6d9eb0f32069bd57afb5a18f06cee846f433",
+    "version": "1.6.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.6.1/creative-restock-1.6.1.zip",
+    "sha256": "13acd60c23b24df7ee8dc375c2cf464588ae16bdd8fe0e35359d23b23349d0b8",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.6.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.6.1",
     "changelog": [
-        "WCFM Marketplace: a \"Back in stock\" page on the WCFM vendor dashboard (endpoint back-in-stock, through wcfm_query_vars, wcfm_menus, wcfm_endpoint_title and wcfm_load_views) listing the vendor's own sold-out items with how many are waiting, and the morning vendor digest, as for Dokan. Both behind the existing vendor_demand and vendor_digest settings, off by default. Vendors see counts, never addresses. The rewrite rules are flushed once when WCFM Marketplace is first seen (crestock_wcfm_rules, removed on uninstall).",
-        "WCFM Marketplace: a \"Back in stock\" switch on WCFM → Capability (its Marketplace capabilities), stored in WCFM's wcfm_capability_options as back_in_stock with WCFM's convention (ticked turns it off). The menu entry, the page and the vendor digest are gated on the new wcfm_is_allow_back_in_stock filter, as WCFM's own features are, asked as the vendor, so per-group capability rules (WCFM Groups & Staffs) apply. A vendor without it gets no menu entry, WCFM's no-permission notice on the page and no digest.",
-        "Tests: composer test:integration:wcfm runs the integration suite with WCFM and WCFM Marketplace loaded (CRESTOCK_WCFM=1), in CI next to Dokan's. wp-env maps WCFM 6.8.2 and WCFM Marketplace 3.8.4, inactive.",
-        "Priority by spend reads every guest's spend (paid orders without an account under the address, less refunds) in one grouped, read-only query per 500 addresses on WooCommerce's order tables (Storage\\GuestSpend, HPOS or posts storage), instead of loading each guest's orders and refunds one by one. The ranking is the same.",
-        "The vendor page and digest are shared by both marketplaces (Compat\\Marketplace); Compat\\Dokan keeps its constants, hooks and behaviour. The vendor digest links to the vendor page of the marketplace the vendor belongs to.",
-        "The vendor page and each vendor's digest job read the vendor's own products in one indexed query (by author, IDs only) and the demand of those in one aggregate, instead of two aggregates over every waiting product and a vendor lookup for each. The morning run still reads the waiting products once to know which vendors get a digest.",
-        "WCFM Marketplace: a product's vendor is what wcfm_get_vendor_id_by_post() says while WCFM Marketplace is active; a product WCFM gives the store is no longer shown to its author.",
-        "SMS: a STOP reply removes the number, and its consent, from every request that has it, under any item or address (RequestService::forgetPhone()); before, only the request whose text was refused lost it, and the others each failed once first.",
-        "Team alerts: an ended restock names each add-on channel (\"Sent by Text message\") instead of giving its ID.",
-        "Team alerts and marketing sync share one HTTP call (Modules\\Http) and one retry (Modules\\Retry: once more ten minutes later, then logged and given up; marketing sync doesn't retry a refusal).",
-        "\"Back in stock: marketplace vendors\" shows on the settings while Dokan or WCFM Marketplace is active, and its descriptions no longer name Dokan only."
+        "crestock_alternative_allowed filter: whether a product may be shown under the form while a sold-out item is chosen, asked before the list is cut to the shop's limit, so a product turned down leaves its place to the next best seller (docs/HOOKS.md). For products that must never show there.",
+        "While the chosen item can't be ordered, only quantity (.quantity) and Add to cart (.single_add_to_cart_button) are hidden, not their whole container (.woocommerce-variation-add-to-cart), so what other plugins print there stays: Kadence Shop Kit's Size guide, wishlist buttons. Before, the Size guide went on every product sold out in every size and whenever a sold-out size was chosen.",
+        "On a product sold out in every size, pressing Notify me before choosing one keeps \"Sold out in every width\" above the form; the error by the button, aria-invalid and the focus move are unchanged. With the inline form, any error shown by a field now leaves the status line for the chosen item as it was.",
+        "items/{id}/alternatives takes only the site's languages for locale (its own, en_US, or one in get_available_languages()), so a made-up locale is answered and cached as the default instead of getting a cache entry of its own."
     ]
 }
