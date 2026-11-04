@@ -1,15 +1,13 @@
 {
-    "version": "1.6.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.6.1/creative-restock-1.6.1.zip",
-    "sha256": "13acd60c23b24df7ee8dc375c2cf464588ae16bdd8fe0e35359d23b23349d0b8",
+    "version": "1.6.2",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.6.2/creative-restock-1.6.2.zip",
+    "sha256": "b73192653d483d4dbff3f62cfd972cbce27cff76b38cc1ff92ceae614cae0196",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.6.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.6.2",
     "changelog": [
-        "crestock_alternative_allowed filter: whether a product may be shown under the form while a sold-out item is chosen, asked before the list is cut to the shop's limit, so a product turned down leaves its place to the next best seller (docs/HOOKS.md). For products that must never show there.",
-        "While the chosen item can't be ordered, only quantity (.quantity) and Add to cart (.single_add_to_cart_button) are hidden, not their whole container (.woocommerce-variation-add-to-cart), so what other plugins print there stays: Kadence Shop Kit's Size guide, wishlist buttons. Before, the Size guide went on every product sold out in every size and whenever a sold-out size was chosen.",
-        "On a product sold out in every size, pressing Notify me before choosing one keeps \"Sold out in every width\" above the form; the error by the button, aria-invalid and the focus move are unchanged. With the inline form, any error shown by a field now leaves the status line for the chosen item as it was.",
-        "items/{id}/alternatives takes only the site's languages for locale (its own, en_US, or one in get_available_languages()), so a made-up locale is answered and cached as the default instead of getting a cache entry of its own."
+        "The bundled SMS package (creativebranding/sms, in src/Vendor/Sms) is v1.1.0, which adds Account::missing(): what text messages still need (account except for Brevo, token, sender except for ClickSend). Account::ready() now reads it, with the same rule as before.",
+        "phpcs.xml: the pattern for Composer's vendor/ is case-sensitive ((?-i)/vendor/), so it no longer also matches src/Vendor/; src/Vendor/ is excluded on its own line, since the shared packages copied there are linted in their own repositories. Plugin Check still scans them in the release zip."
     ]
 }
