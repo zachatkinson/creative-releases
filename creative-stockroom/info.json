@@ -1,0 +1,23 @@
+{
+    "version": "1.2.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-stockroom-1.2.0/creative-stockroom-1.2.0.zip",
+    "sha256": "f4a7219c36a734c1dec41cf35ef9edd493080554aef23a8d7e689b5a9c3a95fb",
+    "requires": "6.6",
+    "requires_php": "8.1",
+    "tested": "7.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-stockroom-1.2.0",
+    "changelog": [
+        "*Backorders on managed variations* under WooCommerce → Settings → Stockroom. *Never* (the default) keeps 1.1.2's behaviour: Stockroom sets \"Allow backorders?\" to \"Do not allow\" on every variation it manages. *Follow each product's setting* leaves WooCommerce's setting alone. Until now every managed variation was set to \"Do not allow\", so a store that switches to Follow allows backorders per variation. Changing the setting queues cstockroom_recompute_all, which recomputes every managed variation in the background.",
+        "With Follow, a variation that allows backorders is written as 0 \"on backorder\" when its parts run out and can still be bought, on the classic checkout and through the Store API. Stockroom holds its parts as for any other line (WooCommerce's own hold skips it) and never refuses it, so its holds count against other orders and the backorder is served first.",
+        "What a backordered line took below 0 is recorded on the line (_cstockroom_owed, hidden on the order screen). Any later increase to the part (a receipt, a correction, a cancellation, a refund to parts) pays the oldest order first, with an order note on each one paid (\"has arrived\", and \"It can be made\" once it waits for nothing). Cancelling an owed order clears what it was owed; a refund or an edit takes off the units it gives back that came from parts. Every writer re-reads the owed meta under a row lock when the line has one and writes it by key, so a receipt and a refund at the same moment can't overwrite each other, and a stale copy of the order can't lose or double it. With Never no line has one, so refunds and edits take no extra lock.",
+        "With Follow, the nightly report lists parts owed to orders (owed: part, units, waiting orders, oldest first, units not for any order). The list alone doesn't send the email.",
+        "The History CSV export has a part_key column after part.",
+        "Updates from zachatkinson/creative-releases through the Update URI header, as Creative Restock: the Plugins and Updates screens offer each new release, the View details popup lists its changelog, and the zip is checked against its SHA-256 before it is installed; an update that can't be checked is refused. The manifest is read at most every 12 hours. define( 'CSTOCKROOM_DISABLE_UPDATES', true ) or the cstockroom_updates_enabled filter turns it off. A v* tag publishes the release once CI passes on it (.github/workflows/release.yml; the integration mutation run is checked on the pull request).",
+        "A take that leaves a part below 0 on a line that can backorder is recorded with the reason backorder. The order gets an \"on backorder, waiting for…\" note, and neither cstockroom_shortage nor the shortage email fires. Shortages on lines that can't backorder work exactly as before.",
+        "With Follow, the group tab's notice \"Shortages\" becomes \"Parts owed to orders\": each part below 0, how many it's owed, the orders waiting for it, and any units no order waits for. Its filter view is \"Owed\". With Never the tab reads as before.",
+        "The made-to-order note isn't shown on a variation on backorder, where WooCommerce's \"Available on backorder\" stands.",
+        "Part rows show the label and SKU only. The internal key (\"term:pa_width:7-75\") moved to the part's Edit dialog. It still appears in the CSV import preview and the CLI, and search still matches it.",
+        "The Update URI header names the release manifest (raw.githubusercontent.com/zachatkinson/creative-releases/main/creative-stockroom/info.json) instead of this repository. A site on 1.1.2 installs 1.2.0 by hand once; later versions arrive on the Plugins screen.",
+        "The made-to-order note's help and placeholder give a neutral example (\"Made when you order, ships in 2 days\") instead of a client's."
+    ]
+}
