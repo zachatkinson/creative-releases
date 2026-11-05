@@ -1,13 +1,13 @@
 {
-    "version": "1.6.2",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.6.2/creative-restock-1.6.2.zip",
-    "sha256": "b73192653d483d4dbff3f62cfd972cbce27cff76b38cc1ff92ceae614cae0196",
+    "version": "1.6.3",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.6.3/creative-restock-1.6.3.zip",
+    "sha256": "b59487ad3d3ddcd78a0837255d2285c26950b97f99dca961cb3e8b5ae66191d6",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.6.2",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.6.3",
     "changelog": [
-        "The bundled SMS package (creativebranding/sms, in src/Vendor/Sms) is v1.1.0, which adds Account::missing(): what text messages still need (account except for Brevo, token, sender except for ClickSend). Account::ready() now reads it, with the same rule as before.",
-        "phpcs.xml: the pattern for Composer's vendor/ is case-sensitive ((?-i)/vendor/), so it no longer also matches src/Vendor/; src/Vendor/ is excluded on its own line, since the shared packages copied there are linted in their own repositories. Plugin Check still scans them in the release zip."
+        "Update details: \"Compatible up to\" names the WordPress you run when it is a later point release of the version the plugin was tested with (tested with 7.1, running 7.1.4: 7.1.4), as WordPress.org does. The details popup no longer warns that the plugin was not tested with your version, and Dashboard > Updates no longer says its compatibility is unknown. A newer WordPress (7.2) still gets the warning.",
+        "Update details: each line of the changelog shows exactly as it was written. Before, a line naming a character code, such as the one for an apostrophe, showed the character instead of the code."
     ]
 }
