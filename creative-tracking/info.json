@@ -1,12 +1,13 @@
 {
-    "version": "1.11.3",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.3/creative-tracking-1.11.3.zip",
-    "sha256": "72717d09907dac1b821a9a9f4ad7e7e5aa4abd595e379bbb83d085d9b7a37ec7",
+    "version": "1.11.4",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.4/creative-tracking-1.11.4.zip",
+    "sha256": "1f805c61e4de567a0c27e141ede276ce27080e8731948d9f057b2f50e2d5c17c",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.3",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.4",
     "changelog": [
-        "Dashboard → Updates → Check again offers a new release on the first click. Before, WordPress read the cached release information before the plugin cleared it, so a new release showed only on a second click or after the 12-hour cache ran out."
+        "The update's \"Compatible up to\" names the WordPress you run when it is a later point release of the version the plugin was tested on. Before, a plugin tested on 7.1 showed \"This plugin has not been tested with your current version of WordPress\" in View details on 7.1.4, and Dashboard → Updates said its compatibility was unknown. A newer WordPress, such as 7.2, still shows the warning.",
+        "Changelog lines in View details show exactly as written. Before, a line that spelled out an HTML character code, such as the code for an apostrophe, showed the character instead of the text typed."
     ]
 }
