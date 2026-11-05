@@ -1,19 +1,16 @@
 {
-    "version": "1.2.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-stockroom-1.2.1/creative-stockroom-1.2.1.zip",
-    "sha256": "608f9d18543004a62ba00df297e7dd86248e229eefe6dcac17fc76fa1de7f36c",
+    "version": "1.2.2",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-stockroom-1.2.2/creative-stockroom-1.2.2.zip",
+    "sha256": "f29861f9f0f82e442df81b9656159cf1e9ad42bd881fcf4b560dba0ae22dc109",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-stockroom-1.2.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-stockroom-1.2.2",
     "changelog": [
-        "A restore or refund of a line whose product was permanently deleted no longer puts its ready-made units on a shelf that can't sell them. WooCommerce loads such a line without its variation id and with the parent product in its place, so the units went to the parent's row, or to row 0 for a simple product. They are now written off, with the reason \"N units written off: their product was deleted\" and the line's own variation (or product) id in the History. Parts still go back to their shelves. A product that is only in the trash is unchanged: its units go back to it.",
-        "The update details popup shows the changelog as plain text, without * emphasis marks.",
-        "The nightly report (email and Preview tab) ends a left-behind entry for a slug collision with one full stop. The merge steps now follow the list as a sentence of their own, instead of ending the entry with a full stop that the list's \"; \" or final \".\" doubled. The Parts tab and wp stockroom check keep the reason and its steps together, as before.",
-        "Plain-text emails keep apostrophes and quotes. The three plain templates escaped their text for HTML, and WooCommerce's plain-text clean-up deletes &#039;, so a part labelled Philly's arrived as \"Phillys\" and the slug-collision reason as \"Its terms slug\". They now print the text with tags stripped and entities decoded (BaseEmail::plain()).",
-        "The help under \"Backorders on managed variations\" names no version: \"Variations Stockroom has managed start at \"Do not allow\": allow backorders on each one that should take them.\" In English and French.",
-        "Stockroom in Canadian French, every string (419 of 419): the admin screens, settings, emails, order notes, WP-CLI, and the cart and checkout messages shoppers see. Typography after the Office québécois de la langue française, the same in every string; WooCommerce's fields and choices quoted as WooCommerce's own fr_CA translation shows them. The admin script's strings ship as JSON. A unit test fails when a string in the POT has no French.",
-        "composer i18n:compile builds the .mo, .l10n.php and script JSON from the .po.",
-        "The admin smoke test checks the \"Parts owed to orders\" and \"Shortages\" notices with axe."
+        "The update details popup and Dashboard → Updates no longer call Stockroom untested on a later point release of the WordPress branch it was tested with. The release manifest names a branch (7.1), and WordPress compares whole versions, so 7.1.4 read as newer than 7.1: the popup warned \"This plugin has not been tested with your current version of WordPress\" and Updates showed \"Compatibility: Unknown\". Stockroom now reports the running version when it is in that branch, as WordPress.org does; a newer branch (7.2) still gets the warning.",
+        "The update details popup shows each changelog line as it is written. A line holding an HTML entity, such as the code for an apostrophe in 1.2.1's line about plain-text emails, showed the character instead of the code. Every ampersand in a line is now shown as typed.",
+        "The French cart message for a deck that can't be made in the quantity ordered says \"only\" again: « Pour le moment, nous ne pouvons fabriquer que 1 × … », where it read « nous pouvons fabriquer 1 × … ».",
+        "Tests for a restore and a refund of a line whose variation is in the Trash: its ready-made units go back to its shelf with a Restore or Refund entry, not a write-off, as 1.2.1 said.",
+        "Ten files under src/ lost casts, guards and steps that mutation testing showed changed nothing, such as the hold's sort and de-duplication of the part ids it locks, which PartRepository::lockForUpdate() already does. Stockroom behaves exactly as in 1.2.1. The same work added tests that the takes and holds lock their counts before changing them, and the integration mutation score went from 81% to over 99%."
     ]
 }
