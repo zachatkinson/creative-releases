@@ -1,14 +1,13 @@
 {
-    "version": "1.0.10",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.10/creative-reviews-for-woocommerce-1.0.10.zip",
-    "sha256": "cd14d5c4ed2bc0c9e2345b1b073c0373fa2c439bc61eaeccfd640f982be02d81",
+    "version": "1.0.11",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.11/creative-reviews-for-woocommerce-1.0.11.zip",
+    "sha256": "096efefc94c04d2ae56e6f3bc104c023e5ec75bfa41bf45454fdad81200881cb",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.10",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.11",
     "changelog": [
-        "With WooCommerce's 'Reviews can only be left by verified owners' ticked, only verified buyers can review. Others see a note in place of the form, and their reviews are refused.",
-        "The Tools page's Photo Reviews counts read right in the singular.",
-        "Reviews from the product page's form by signed-in buyers are marked Verified buyer. The form sent no REST nonce, so WordPress treated every product-page review as a guest's."
+        "The update's details no longer warn that the plugin is untested on a newer point release of the WordPress it was tested with, such as 7.1.4 when it was tested on 7.1, and Dashboard > Updates no longer reads \"Unknown\" there. A newer WordPress, such as 7.2, still shows the warning.",
+        "Changelog lines in the update's details show exactly as written. A line that spelled out a character code showed the character instead."
     ]
 }
