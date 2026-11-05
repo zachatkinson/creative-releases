@@ -1,15 +1,17 @@
 {
-    "version": "1.6.2",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.2/creative-search-1.6.2.zip",
-    "sha256": "61bf426957375d5c8058ccb4bf53dca3988463f720d95d3856113a09a317f93f",
+    "version": "1.6.3",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.3/creative-search-1.6.3.zip",
+    "sha256": "8570adce9db618f318ddc5ab3ff1aeb80a885f7ba4bf808d0ce47bdbfa36c382",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.2",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.3",
     "changelog": [
-        "in_stock_first now orders among products that match alike: products every searched word reaches outside the description first, then products some word reaches only in the short or long description; in each group what can be bought first, each part in order of relevance. Pinned products keep their place (D-142).",
-        "The page the shopper asked for (the panel's best page, its title holding every word searched) gets a row after the first products named for the search and before products found only by their description, also on a phone whatever suggest_pages_phone says. The other pages keep their place at the end (D-143).",
-        "Each product in /suggest carries described (D-142, D-143).",
-        "An update package the cached release manifest doesn't name is no longer installed unchecked: the manifest is read again once, and the package is installed only when it is named there and its SHA-256 matches; otherwise csearch_package_unknown asks to check for updates again (D-144)."
+        "CI spends fewer minutes: a version tag publishes once CI has passed on the commit's push to main instead of running it again, the 10,000-product catalogue is cached between runs (the reindex and every budget still run), the oldest-versions leg runs two browser projects, Infection on a pull request mutates only its changed lines, and changes to the docs alone run nothing (D-148).",
+        "The update details window no longer warns that the plugin hasn't been tested with a maintenance release of the WordPress version it was tested with (\"Tested up to: 7.1\" on 7.1.4) (D-149).",
+        "A misspelling finds what the word it is read as finds: \"hody\", read as \"hoody\", finds every hoodie and sweater through the word's stem and the owner's synonyms (D-146).",
+        "Other typo candidates found only in a description rank after every other product, and for words of four letters or fewer don't count there at all; when the panel shows a page named for the search, products that only mention its words in their description stay out of the panel (D-146).",
+        "The panel's \"in a category\" row is chosen from the products that match by more than their description: \"beanie\" no longer offers \"beanie in Decks\" because five decks mention a beanie, and when the cap cuts rows a category row stays ahead of a scope built only on description matches (D-147).",
+        "\"See all\" in the panel counts what the page it opens lists: when a size in the query becomes the shop's filter (\"8.25 deck\" opens Decks in 8.25″), the count is the filtered page's, not every product the words find (D-145)."
     ]
 }
