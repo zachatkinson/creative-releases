@@ -1,15 +1,15 @@
 {
-    "version": "1.6.5",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.5/creative-search-1.6.5.zip",
-    "sha256": "e6fbc1813f8d780b3bb52a2ddda9a8f1b623af39c13bbf0e03b7e404ea3b806b",
+    "version": "1.6.6",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.6/creative-search-1.6.6.zip",
+    "sha256": "bc4bd58ddb24516968b31001933a4f85d3f2376dddd94202991df6bff5e38ebf",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.5",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.6",
     "changelog": [
-        "A size or other value in a search that has nothing in stock where the search lands is no longer applied: \"9 deck\" opens Decks, says \"Nothing in Width 9.00″ is in stock right now.\" with links to the closest widths in stock, \"See all\" counts Decks, and Analytics still logs the search as finding nothing (D-154).",
-        "The panel says so too, outside the suggestions and in what screen readers hear; it suggests only products the page Enter opens lists; and \"Matches Width: 9.00″\" shows only on a product that has 9.00″ in stock (D-155).",
-        "A number becomes a size filter only when the products the search lands on have that attribute at all: \"9 hoodie\" opens the hoodies, not an empty page filtered to Width 9.00″ (D-156).",
-        "Releases: each commit has its own release queue, so a tag's release can no longer be dropped behind another run, and a re-run finishes a release that published its zip but not its info.json (D-153)."
+        "A number in a search becomes a size filter only when the products that match by more than their description have that attribute: \"9 hoodie\" no longer filters by a deck width because a few decks mention a hoodie in their descriptions, and Enter opens the results for the words, with no line in the panel or on the page (D-157).",
+        "A product hidden from the catalogue or from search no longer makes a number filter a page that can't list it (D-157).",
+        "A number that would leave the page listing nothing, and that is part of the name of a product the search finds without that value (\"cloud 9\" for a Cloud 9 board with no 9.0 width), is searched as a word instead of showing \"Nothing in Width 9.0 is in stock\". Stores whose product names hold numbers the products don't carry as attribute values will see those searches as words; a value that lists products still filters (D-157).",
+        "French (Canada): a no-break space before the colon in \"Le plus proche en stock :\" and in seven other strings that had the same mistake (\"Correspond à Width : 9.00″\", \"Résultats pour « … »\" and five help texts); the i18n check and the unit tests now fail on a plain or missing space before a colon or inside « » in any fr_CA string (D-158)."
     ]
 }
