@@ -1,15 +1,12 @@
 {
-    "version": "1.7.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.7.0/creative-restock-1.7.0.zip",
-    "sha256": "8fb61526fd20b2a7d6b82276a670d67785a94fd00d185085b1df2774b78d5111",
+    "version": "1.7.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-restock-1.7.1/creative-restock-1.7.1.zip",
+    "sha256": "9d28ffdba2347ec21993a9d861f69b44b3d4afad88b48e6836314acabec48885",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.7.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-restock-1.7.1",
     "changelog": [
-        "A setting, **Notify me on shop cards** (WooCommerce > Settings > Products > Back in stock, after Form style), on by default. Off, a sold-out product's card in the shop's lists keeps WooCommerce's own button and gets no Notify me; the product page's form is unchanged. With the form itself switched off, cards offer no Notify me either.",
-        "A sold-out simple product's card in the shop's lists has one button, Notify me, in place of WooCommerce's Read more with a Notify me link under it. The button opens the product at the form (keeping a size the shop is filtered by), is drawn as the theme draws the card's button, and its label for screen readers reads \"Notify me when “Hat” is back in stock\". The Store API's product data says the same, so block-built lists match. Variable products keep their button with the link after it, as before.",
-        "CI only, nothing in the plugin changes: a release no longer runs CI again on its tag. It publishes once CI's run on the same merge commit, from its push to main, has passed (at once when it already has, else when it does) and fails when that run failed or never ran; the two triggers never publish twice. The integration mutation gate skips a pull request that changes only the version a release writes (the plugin header and CRESTOCK_VERSION, package.json's and package-lock.json's, the translations' version and date headers and the .mo compiled from them), and a newer push to a pull request cancels its run still going.",
-        "CI only: the integration mutation gate no longer runs on a pull request whose composer.lock changes only tools it doesn't run with, such as PHPStan or a sub-dependency. A change to Infection, the test runners, the PHP parser Infection mutates with or the platform settings still runs it, and the weekly full run covers the rest."
+        "Notify me on a shop list's cards carries a filter over only when it chooses one of the product's sizes. Before, every filter_* in the list's address became an attribute_pa_* on the product's: on a list filtered by stock status, each card's Notify me led to …?attribute_pa_stock_status=outofstock#crestock. Now a filter is carried only for an attribute the product's variations use, with a single one of their values (Decks filtered by width still open with 8.25″ chosen), and a simple product's Notify me is its own address plus #crestock, whatever the filters."
     ]
 }
