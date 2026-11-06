@@ -1,14 +1,15 @@
 {
-    "version": "1.6.4",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.4/creative-search-1.6.4.zip",
-    "sha256": "59a43b39b3623d4658eae8fb294ef1e6c330b76d70f1f4e5ef0715c0fd2f79e5",
+    "version": "1.6.5",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.5/creative-search-1.6.5.zip",
+    "sha256": "e6fbc1813f8d780b3bb52a2ddda9a8f1b623af39c13bbf0e03b7e404ea3b806b",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.4",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.5",
     "changelog": [
-        "CI: a pull request that touches only the browser tests or the workflows runs the standards, the unit tests and the newest leg, not the full matrix, mutation testing or the budgets; main still runs everything (D-152).",
-        "\"See all\" counts what the filtered page lists when WooCommerce hides sold-out products and filters through its attributes lookup table: a variable product whose variation in the size is sold out is not counted, as WooCommerce's listing leaves it out (\"8.25 deck\" said 122 on a Decks page of 88) (D-151).",
-        "A category, tag or brand reached only by a loose typo candidate in its description is no longer offered: \"hody\" no longer brings a brand whose description says \"body\" (D-151)."
+        "A size or other value in a search that has nothing in stock where the search lands is no longer applied: \"9 deck\" opens Decks, says \"Nothing in Width 9.00″ is in stock right now.\" with links to the closest widths in stock, \"See all\" counts Decks, and Analytics still logs the search as finding nothing (D-154).",
+        "The panel says so too, outside the suggestions and in what screen readers hear; it suggests only products the page Enter opens lists; and \"Matches Width: 9.00″\" shows only on a product that has 9.00″ in stock (D-155).",
+        "A number becomes a size filter only when the products the search lands on have that attribute at all: \"9 hoodie\" opens the hoodies, not an empty page filtered to Width 9.00″ (D-156).",
+        "Releases: each commit has its own release queue, so a tag's release can no longer be dropped behind another run, and a re-run finishes a release that published its zip but not its info.json (D-153)."
     ]
 }
