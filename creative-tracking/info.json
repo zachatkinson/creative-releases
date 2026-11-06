@@ -1,13 +1,14 @@
 {
-    "version": "1.11.4",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.11.4/creative-tracking-1.11.4.zip",
-    "sha256": "1f805c61e4de567a0c27e141ede276ce27080e8731948d9f057b2f50e2d5c17c",
+    "version": "1.12.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.12.0/creative-tracking-1.12.0.zip",
+    "sha256": "b1681e1557f77d4a0f55bcfc4abc38045c4df1d615c69deac5750a359104b542",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.11.4",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.12.0",
     "changelog": [
-        "The update's \"Compatible up to\" names the WordPress you run when it is a later point release of the version the plugin was tested on. Before, a plugin tested on 7.1 showed \"This plugin has not been tested with your current version of WordPress\" in View details on 7.1.4, and Dashboard → Updates said its compatibility was unknown. A newer WordPress, such as 7.2, still shows the warning.",
-        "Changelog lines in View details show exactly as written. Before, a line that spelled out an HTML character code, such as the code for an apostrophe, showed the character instead of the text typed."
+        "The tracking page can say when an order is expected to arrive (\"Arrives Mon, Nov 9\"), under the order's heading and above the progress bar, until the order is delivered. The date comes only from another plugin answering the new filter ctracking_expected_delivery (string $text, WC_Order $order); Creative Checkout 1.4.0 answers it for orders whose checkout showed a date. With no answer, which is most shops, the page prints nothing extra. The answer is shown as text, never as markup.",
+        "The tracking page lists what's in the order under the progress bar: a small photo, the name, the options chosen (size, colour or whatever the shop calls them, read from the order line) and the quantity. A parcel that lists its items shows those; otherwise the order's items show once (before it ships, in its one parcel, or after several parcels). The name is the one the order kept, so a product deleted since still reads right; an item without a photo gets a plain square, never a broken image; a line refunded in full is left out; a long order shows the first five and \"And 3 more items\". Photos are decorative beside the name. Shown only once the order key, or the number and billing email, match, as the rest of the page. The filter ctracking_tracking_page_items (bool $show, WC_Order $order) turns the list off, leaving the page as in 1.11. Template tracking-page-items.php; tracking-page.php is now version 1.12.0.",
+        "CI spends fewer minutes; nothing in the plugin changes. A version tag publishes once CI has passed on the tagged commit's push to main instead of running every job again (a tag pushed while that run is going publishes when it passes; one on a commit whose CI failed or never ran fails and says so), and a newer push to a pull request cancels its older CI and WooCommerce latest runs."
     ]
 }
