@@ -1,0 +1,22 @@
+{
+    "version": "0.1.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.1.0/creative-skateboard-builder-0.1.0.zip",
+    "sha256": "631f650d85920e4dfaa877ce680ede0c293a4ee2d194fc04eabf4c04371c2713",
+    "requires": "7.0",
+    "requires_php": "8.5",
+    "tested": "7.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.1.0",
+    "changelog": [
+        "The bootstrap (creative-skateboard-builder.php): headers, constants, the PHP and WordPress floors checked before the autoloader, the activation and deactivation hooks, compatibility declared for HPOS and the Cart and Checkout blocks, and boot on plugins_loaded. Below PHP 8.5, WordPress 7.0 or WooCommerce 11.2 the plugin does nothing and shows one notice to people who can manage plugins (D-023).",
+        "Plugin, a hand-written Container and the Hookable contract, in the PSR-4 layers docs/STANDARDS.md sets out, enforced by deptrac.",
+        "The two tables, cbuild_specs and cbuild_builds (Install\\Schema), created by the first migration on activation with nothing seeded (D-037). dbDelta() a second time changes nothing, and a table it fails to create fails the migration.",
+        "The migration framework (Install\\Migrations): versioned, ordered, idempotent steps; a lock taken in one statement that names its holder and expires after 300 seconds (D-021, D-033); batches that resume from a saved cursor, read from the table once the lock is held; a failed step retried after 1, 5 and 30 minutes, then hourly. Migrations run inline only for a shop manager on an admin page, for up to 2 seconds, and otherwise in one queued cbuild_migrate action, which queues its own continuation (D-022, D-043).",
+        "Activation and deactivation on a single site and across a network, with a site added later installing itself (D-025); uninstall, which removes the tables, options, transients, scheduled actions with their logs and group, and the cache group, on every site, with or without WooCommerce active and on a PHP below the floor (D-024, D-039, D-043), and keeps order item meta.",
+        "Port\\Clock and Port\\Logger with Adapter\\SystemClock (UTC) and Adapter\\WooCommerceLogger (source creative-skateboard-builder); Port\\Queue over Action Scheduler.",
+        "The updater (Updates\\): reads the agency's release manifest over HTTPS, takes a package only from this plugin's own releases, refuses a zip whose SHA-256 does not match, and names only the plugin in its two requests. Off with CBUILD_DISABLE_UPDATES or the cbuild_updates_enabled filter, whenever either is set; its own package is then refused, not installed unchecked.",
+        "The public API: the cbuild_updates_enabled filter; the constants CBUILD_DISABLE_UPDATES, CBUILD_VERSION, CBUILD_FILE, CBUILD_PATH and CBUILD_URL; three options, one site transient, two tables, the cbuild_migrate action and the log source, each in docs/HOOKS.md and the snapshot (tests/Fixtures/api-surface.json). composer api:check fails when the code, the snapshot and the document disagree.",
+        "Tests: 153 unit tests; 62 integration tests in wp-env on the newest and oldest WordPress and WooCommerce, MySQL 8.4, MariaDB 10.11, HPOS off, HPOS syncing, multisite and with WordPress told a persistent object cache is present (a real shared cache is issue #4), among them two real processes racing for the migration lock; a browser smoke test on nine Playwright projects, with axe.",
+        "CI (.github/workflows/ci.yml): PHPCS, PHPStan level 9, deptrac, the grep gates and their self-test, the coverage floors, the API snapshot, the JavaScript and CSS standards, the asset budgets, Infection and StrykerJS, the benchmarks, the integration matrix, Plugin Check on the built zip, the zip installed, upgraded over itself and uninstalled, the browser projects, Lighthouse CI, a release dry run, the dependency audits and a gitleaks scan, with every action pinned to a commit SHA. A weekly canary on WordPress trunk and WooCommerce's pre-release, the release workflow with CycloneDX SBOMs, and Dependabot.",
+        "Docs: HOOKS.md, SETTINGS.md, SECURITY.md, PRIVACY.md, A11Y.md, BENCHMARK.md, DECISIONS.md (D-020 to D-048), reviews/M1.md, README.md and readme.txt; the POT file."
+    ]
+}
