@@ -1,14 +1,20 @@
 {
-    "version": "0.2.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.2.0/creative-skateboard-builder-0.2.0.zip",
-    "sha256": "f1aa6d37468e31581373d54f31e9ada181736ca9ad2ddd42de7958d14ea03eb2",
+    "version": "0.3.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.3.0/creative-skateboard-builder-0.3.0.zip",
+    "sha256": "5db305056f9b88da92c158768310d9f905d7f6df7af1662be8980ba451b519ff",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.2.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.3.0",
     "changelog": [
-        "The fit rules: the checks that will decide which trucks, wheels, risers, bolts, bearings and grip go with a deck, from each part's specs.",
-        "How a build is priced, and the check every build will pass before it reaches the cart.",
-        "Nothing a shopper or shop owner sees yet. The builder arrives in later versions."
+        "The index of part specs: one value per part and spec, from the part's own fields, an attribute the shop maps or a maker's size chart.",
+        "A Part specs tab on each product, and the same fields in each variation, where the shop fills in what the builder needs to know of a part.",
+        "WooCommerce > Builder, where the shop keeps each truck maker's size chart.",
+        "Import and export under WooCommerce > Builder: download every part's specs as a CSV file, fill it in with a spreadsheet, and import it. The file is checked and shown first, and nothing changes until you confirm.",
+        "A Catalogue check under WooCommerce > Builder: lists the parts whose sources disagree or hold a value that cannot be read, and background work that failed, each with a link to where it is fixed.",
+        "The same work from the command line, for shops that use WP-CLI: export and import specs, run the Catalogue check, and rebuild the index.",
+        "Every part is read into the index when the plugin is installed, updated or activated, and the Catalogue check has a button to read them all again.",
+        "Three Site Health tests, which say when the specs index was not rebuilt, a background job failed or an import stopped, or the Catalogue check has something to fix.",
+        "A settings screen, WooCommerce > Settings > Builder, to say which product attribute holds which spec and which source wins where two disagree. A variation takes an attribute from its parent product when it has none of its own."
     ]
 }
