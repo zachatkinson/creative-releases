@@ -1,13 +1,24 @@
 {
-    "version": "0.3.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.3.1/creative-skateboard-builder-0.3.1.zip",
-    "sha256": "082b600417554966e031e4b043d39838e4847d95b821e36ef54999f81399da04",
+    "version": "0.4.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.4.0/creative-skateboard-builder-0.4.0.zip",
+    "sha256": "f71428fcfe5f3e9ae76f8ea0cf9eafd7bf7d9b8e645ecffbe03c4e605afd453a",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.3.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.4.0",
     "changelog": [
-        "Fixed: the Part specs fields no longer add to what a product's edit form sends unless their group is open. On a host that limits a form to 1,000 fields, a product with many variations could go over the limit when updated, and other plugins' settings on that product, its short description or its slug could go unsaved.",
-        "A link to a variation's Part specs now checks a moment later that the fields are still in view."
+        "A new product type, Builder kit: the product a shopper will build from parts. It cannot be bought as an ordinary product, and it holds no price of its own.",
+        "A Build tab on a kit: its slots and what may fill each, the fit rules, up to six ready builds, and assembly with its fee. What cannot be saved is named with a link to its field, and the rest is saved.",
+        "Five new settings: a build discount, where a fixed coupon lands, how often one address may ask for a build, a trusted proxy header, and what a new kit starts with.",
+        "The builder's own address for a build's state, which the builder page will ask in a later version: which parts fit, why others do not, and what the build costs. It is read-only and limited for each address.",
+        "Two abilities for signed-in tools, to check a build and to price one.",
+        "Other plugins can rule a part out, price some shoppers apart, and translate a kit's own words.",
+        "The Catalogue check lists a kit whose settings can no longer be read.",
+        "A kit stays out of your catalogue, search results, feeds and sitemaps, Yoast SEO's among them.",
+        "The Catalogue check now reads your kits: a slot with no parts or nothing in stock, a part missing a spec its slot needs, a ready build that no longer fits.",
+        "The Part specs tab opens the group of fields a product's slot needs.",
+        "A product that no kit takes no longer shows Part specs fields in its variations.",
+        "When a value on the Part specs tab is not saved, the notice is now a link that takes you to its field.",
+        "Site Health's Info tab shows the state of the specs index in words."
     ]
 }
