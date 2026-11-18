@@ -1,15 +1,17 @@
 {
-    "version": "1.6.6",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.6.6/creative-search-1.6.6.zip",
-    "sha256": "bc4bd58ddb24516968b31001933a4f85d3f2376dddd94202991df6bff5e38ebf",
+    "version": "1.7.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-search-1.7.0/creative-search-1.7.0.zip",
+    "sha256": "5f6b689fdd2f0a4d403a5eeba8206a7cb26d90f2fd736e19fb7f9d9a467cbd0d",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.6.6",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-search-1.7.0",
     "changelog": [
-        "A number in a search becomes a size filter only when the products that match by more than their description have that attribute: \"9 hoodie\" no longer filters by a deck width because a few decks mention a hoodie in their descriptions, and Enter opens the results for the words, with no line in the panel or on the page (D-157).",
-        "A product hidden from the catalogue or from search no longer makes a number filter a page that can't list it (D-157).",
-        "A number that would leave the page listing nothing, and that is part of the name of a product the search finds without that value (\"cloud 9\" for a Cloud 9 board with no 9.0 width), is searched as a word instead of showing \"Nothing in Width 9.0 is in stock\". Stores whose product names hold numbers the products don't carry as attribute values will see those searches as words; a value that lists products still filters (D-157).",
-        "French (Canada): a no-break space before the colon in \"Le plus proche en stock :\" and in seven other strings that had the same mistake (\"Correspond à Width : 9.00″\", \"Résultats pour « … »\" and five help texts); the i18n check and the unit tests now fail on a plain or missing space before a colon or inside « » in any fr_CA string (D-158)."
+        "csearch_ranked_ids: another plugin can ask for Creative Search's ranking of a query from PHP, ranked as the results page ranks (hidden products, and sold-out ones while the shop hides them, stay out) but without the owner's pinned products; it returns null while the index isn't built, so the caller can fall back to its own search (D-161).",
+        "csearch_ranked_ids takes product_ids: up to 2,000 product or variation ids to keep the ranking to, applied in the ranking's SQL so the 500-result cap counts only those products (D-162).",
+        "A log source of its own for other plugins' searches: builder joins suggest and page, csearch_log_sources registers others, and a source no one registered is logged as other instead of suggest. The Analytics tab lists every source in its totals and gets a \"Searches from\" menu to show one source on its own (D-163).",
+        "The Analytics tab's daily chart, top queries, the nightly roll-ups and the suggested searches count only the shop's own searches (the suggestions and the results page), so another plugin's searches never become the shop's suggestions or top queries; a suggestion click is recorded only on the shop's own searches (D-163).",
+        "CI's GitHub Actions run on Node 24: checkout v7, cache v6, setup-node v7, upload-artifact v7, composer-install v4 (D-159).",
+        "CI's actions are pinned to commit SHAs, which the repository now requires, and Dependabot keeps them current (D-160)."
     ]
 }
