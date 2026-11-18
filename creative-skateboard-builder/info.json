@@ -1,19 +1,17 @@
 {
-    "version": "0.8.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.8.0/creative-skateboard-builder-0.8.0.zip",
-    "sha256": "e17515df7f5b28d2f456f6f9dc7fd8308db9eb503fffc64cb52825b368b1b952",
+    "version": "0.9.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.9.0/creative-skateboard-builder-0.9.0.zip",
+    "sha256": "c0200eb10a9e36ea5ad2b4e845215837333e413f586036e1a8a7af68ba47c775",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.8.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.9.0",
     "changelog": [
-        "Nothing is picked for the shopper. After the deck, each step labels its recommendation, and the board and the total count only what was picked, with an estimate of the complete board beside the total.",
-        "A signed-in customer saves a build from the review and finds it under My builds in My account, with its picture, its total today and the date it was saved. Open takes it back to the builder, checked again; Rename and Delete work without JavaScript.",
-        "\"Read every part again\" makes the resized copies of layer images that are missing, and the update to 0.8.0 makes them in the background.",
-        "With Yoast SEO, a shared build's address keeps its brackets encoded.",
-        "The board turns over. The grip tape step shows its top: the deck's outline, the grip tape filled into it, a bolt head at each hole and the wheels at the edges. A button by the board turns it over on any step, and the description says which side is shown. A grip's layer image is now a swatch of the tape, and a hardware's can be one bolt's head.",
-        "For the workshop: an order with a build shows it in a Build box, part by part with the specs it was sold with, and warns when the order's lines no longer match it. The assembly ticket prints from there, or for many orders at once from the orders list, which also gains an Assembly column.",
-        "For the customer: the order's page in My account and the order emails show the build's picture under its kit, with the parts under it, and the emails say the lead time and the returns notice.",
-        "Privacy: WordPress's personal data export and erasure include saved builds, a deleted account's builds go with it, on a network too, and the privacy policy guide gains a suggested paragraph."
+        "Focus is seen on a dark theme and a light one: the ring has two tones of its own.",
+        "On a phone, the bar gives the estimate for a complete board under the total.",
+        "My builds has Undo after Delete.",
+        "The order's picture has a short alt text, since its parts are listed under it, and the Build box says \"No specs\" for a part with none.",
+        "On a network, the must-use file is written only by a network admin in wp-admin.",
+        "French (Canada)."
     ]
 }
