@@ -1,17 +1,19 @@
 {
-    "version": "0.7.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.7.0/creative-skateboard-builder-0.7.0.zip",
-    "sha256": "d56470a461fd527700f38ecf7ce3075f8616a051c553748f3a9a90b0fa88fc68",
+    "version": "0.8.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.8.0/creative-skateboard-builder-0.8.0.zip",
+    "sha256": "e17515df7f5b28d2f456f6f9dc7fd8308db9eb503fffc64cb52825b368b1b952",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.7.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.8.0",
     "changelog": [
-        "Each part's Part specs panel has a Picture group with a Layer image field: a transparent PNG, WebP or AVIF from the Media Library, shown at the size the picture draws the part. An image that is not transparent, is too small, or is another kind of file is refused, and the notice says why.",
-        "The builder draws the board to scale as the shopper picks: deck, grip, trucks and wheels, each from its layer image, with the parts that have none shown as photos beside it.",
-        "A build in the cart shows a picture of it, made in the background, in place of the deck's photo. A shared build link unfurls with that picture, the build's name and its total.",
-        "Pictures not shown for 30 days are deleted, and the folder is kept under 200 MB. Site Health says when the host cannot make them, or when parts' layer images have no resized copies.",
-        "Updating from 0.6.0 by uploading the zip and choosing Replace current with uploaded works in one step, and the uploaded zip is deleted. From a release older than 0.6.0, deactivate the plugin before updating, then activate it again.",
-        "The seeded Independent truck chart gives each size's baseplate, from Independent's own pages. An upgrade fills the baseplates your copy of the chart leaves empty, and keeps any you typed."
+        "Nothing is picked for the shopper. After the deck, each step labels its recommendation, and the board and the total count only what was picked, with an estimate of the complete board beside the total.",
+        "A signed-in customer saves a build from the review and finds it under My builds in My account, with its picture, its total today and the date it was saved. Open takes it back to the builder, checked again; Rename and Delete work without JavaScript.",
+        "\"Read every part again\" makes the resized copies of layer images that are missing, and the update to 0.8.0 makes them in the background.",
+        "With Yoast SEO, a shared build's address keeps its brackets encoded.",
+        "The board turns over. The grip tape step shows its top: the deck's outline, the grip tape filled into it, a bolt head at each hole and the wheels at the edges. A button by the board turns it over on any step, and the description says which side is shown. A grip's layer image is now a swatch of the tape, and a hardware's can be one bolt's head.",
+        "For the workshop: an order with a build shows it in a Build box, part by part with the specs it was sold with, and warns when the order's lines no longer match it. The assembly ticket prints from there, or for many orders at once from the orders list, which also gains an Assembly column.",
+        "For the customer: the order's page in My account and the order emails show the build's picture under its kit, with the parts under it, and the emails say the lead time and the returns notice.",
+        "Privacy: WordPress's personal data export and erasure include saved builds, a deleted account's builds go with it, on a network too, and the privacy policy guide gains a suggested paragraph."
     ]
 }
