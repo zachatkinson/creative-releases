@@ -1,17 +1,24 @@
 {
-    "version": "0.9.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-0.9.0/creative-skateboard-builder-0.9.0.zip",
-    "sha256": "c0200eb10a9e36ea5ad2b4e845215837333e413f586036e1a8a7af68ba47c775",
+    "version": "1.0.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-skateboard-builder-1.0.0/creative-skateboard-builder-1.0.0.zip",
+    "sha256": "95d6cf81afb76d777da4471e7913090d4ea90a0dc2169841512d5ad15a2f9be4",
     "requires": "7.0",
     "requires_php": "8.5",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-0.9.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-skateboard-builder-1.0.0",
     "changelog": [
-        "Focus is seen on a dark theme and a light one: the ring has two tones of its own.",
-        "On a phone, the bar gives the estimate for a complete board under the total.",
-        "My builds has Undo after Delete.",
-        "The order's picture has a short alt text, since its parts are listed under it, and the Build box says \"No specs\" for a part with none.",
-        "On a network, the must-use file is written only by a network admin in wp-admin.",
-        "French (Canada)."
+        "A kit's page is a configurator: the board beside the steps on a desktop, above them on a tablet or a phone, a rail of steps, and the total at the foot. A block theme gets a kit template of its own.",
+        "The deck step asks the width you ride first, with a guide by shoe size, and remembers a signed-in customer's width.",
+        "One card a look, with its sizes after the card once it is picked. A long step gets sort, filter chips with true counts, search (through Creative Search where it is active) and 30 cards at a time.",
+        "A search that finds nothing says why and offers the way on.",
+        "\"Build a complete with this deck\" on a deck's own page, and rider builds with their own photo or the build's picture.",
+        "A saved build that has changed says so when it is opened: the parts gone, sold out or no longer fitting, with the closest part in each place, and the new prices.",
+        "The kit's Build tab has a Layout section: the stage's side, the board's size and the search.",
+        "Wheels can say they come with their bearings, and then need none of their own.",
+        "Steps hide wheels that need a riser the kit can't supply with bolts long enough, and risers no bolts in stock reach through, each with its reason.",
+        "Part specs opens Sold in sets for parts in slots that take more than one unit. Saving a kit whose presets name a hidden part keeps the presets and says which part.",
+        "The specs CSV has a layer_image column: an export writes each part's layer image by its file name, and an import sets it by file name or attachment ID, checked as the field checks it.",
+        "The builder answers faster on a host with no persistent object cache: each part's card is kept with its facts between requests.",
+        "From 1.0.0 the hooks, the state route's answer, the block and the CSS custom properties are a public API, changed only in a major version (docs/HOOKS.md in the repository)."
     ]
 }
