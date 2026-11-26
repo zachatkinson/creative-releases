@@ -1,12 +1,13 @@
 {
-    "version": "1.13.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.13.1/creative-tracking-1.13.1.zip",
-    "sha256": "766b8619600dca5cd96607cf51f25d57d2bd7cbc30069b1eb4315591b3badf30",
+    "version": "1.14.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.14.0/creative-tracking-1.14.0.zip",
+    "sha256": "96c7e9fb303bcb85bcc75802d669cbeec9c5e742c047ad56ff04a5127bafd804",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.13.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.14.0",
     "changelog": [
-        "The order screen's \"Items in this parcel\" groups a build sold by Creative Skateboard Builder as WooCommerce Product Bundles shows a bundle: a heading with the kit's name and the parts indented beneath it. Every part keeps its own quantity field, so a build can still go in more than one parcel. A \"Whole build\" box on the heading fills each empty part with what is left to ship, or empties them all, and shows as mixed when only some are chosen; it is never sent with the form, and stays hidden without JavaScript (assets/admin-order-items.js, loaded only for an order holding a build). The kit's line, which has nothing to ship (the builder's kits are virtual), is the heading only, unless the parcel being changed already lists it. Parts already in a parcel, what is checked on saving and the field names are as before, and an order with no build shows the form exactly as before."
+        "WooCommerce → Status → System status has a \"Creative Shipment Tracking\" section listing every Tracking template the theme or child theme overrides, with its version, and marking an outdated copy as WooCommerce's own Templates section does (\"Version 1.5.0 is out of date. The plugin has version 1.13.0.\"). WooCommerce compares only its own templates, so a theme's old copy of one of Tracking's (five changed in 1.13.0) kept showing a build as loose lines with nothing to say so. Copies are found where Tracking's template loader looks (creative-tracking/ in the child theme, then the parent, then the theme's root) and compared by their @version header as WooCommerce reads it; a copy without one counts as outdated. The section is in the copied system report too.",
+        "While any copy is outdated, a warning on WooCommerce's screens and Tracking's own (Ship orders, Import tracking, Shipping report), for users who can manage WooCommerce: \"Your theme has outdated copies of some Creative Shipment Tracking templates. Builds and new features may not show until they are updated.\", linked to the section. Dismissing it is per user, and it comes back when the list of outdated copies changes. The check is cached (cleared on a theme switch, on any install or update, and on Tracking's own update; the Status page checks afresh), and no other admin page runs it. Uninstalling removes the cache and the dismissals."
     ]
 }
