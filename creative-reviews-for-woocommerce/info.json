@@ -1,13 +1,15 @@
 {
-    "version": "1.0.11",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.11/creative-reviews-for-woocommerce-1.0.11.zip",
-    "sha256": "096efefc94c04d2ae56e6f3bc104c023e5ec75bfa41bf45454fdad81200881cb",
+    "version": "1.0.12",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-reviews-for-woocommerce-1.0.12/creative-reviews-for-woocommerce-1.0.12.zip",
+    "sha256": "5fb51d191a6f907b888b075f76362efecfa142ec5134f9aeb98e84aee5232aba",
     "requires": "6.9",
     "requires_php": "8.3",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.11",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-reviews-for-woocommerce-1.0.12",
     "changelog": [
-        "The update's details no longer warn that the plugin is untested on a newer point release of the WordPress it was tested with, such as 7.1.4 when it was tested on 7.1, and Dashboard > Updates no longer reads \"Unknown\" there. A newer WordPress, such as 7.2, still shows the warning.",
-        "Changelog lines in the update's details show exactly as written. A line that spelled out a character code showed the character instead."
+        "The creviews_should_request_item filter decides, line by line, whether an order's item is asked about in the request, its reminders and the review page. With every line left out, no request goes (docs/HOOKS.md).",
+        "A Creative Skateboard Builder build's kit line (item meta _cbuild_role set to kit) is left out of review requests, reminders and the review page, as it has nothing of its own to review. The build's parts are asked about as before, and two builds with the same wheels ask about the wheels once. An order of only a kit gets no request. Only the order's item meta is read, so nothing depends on the builder being active, and orders without a build are unchanged.",
+        "Development only, nothing in the plugin changes: the test site checks Photo Reviews 1.2.33, which changed only its text domain and support screen (its review and coupon meta are as in 1.2.32), and the build tools' fast-xml-parser and isomorphic-git are forced to releases without the November advisories.",
+        "CI only, nothing in the plugin changes: a release no longer runs CI again on its tag. It publishes once CI has passed on the tagged commit's push to main, and a new push to a pull request cancels that pull request's superseded run."
     ]
 }
