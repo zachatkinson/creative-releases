@@ -1,16 +1,12 @@
 {
-    "version": "1.13.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.13.0/creative-tracking-1.13.0.zip",
-    "sha256": "2beaac6e4ac74d7c8a7ec8f091e60c7c85b52e05f5a45a49be965804bad1b5b6",
+    "version": "1.13.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.13.1/creative-tracking-1.13.1.zip",
+    "sha256": "766b8619600dca5cd96607cf51f25d57d2bd7cbc30069b1eb4315591b3badf30",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.13.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.13.1",
     "changelog": [
-        "A build sold by Creative Skateboard Builder shows as one entry under the kit's name, with its parts in a list within it, instead of a line for the kit and a line for each part: on the tracking page (each parcel's \"In this parcel\" and \"In your order\"), in My Account's and Track an order's \"In this parcel\" column, in the HTML Shipped, Partially shipped and parcel status emails, and on Ship orders. The plain text emails, the order screen's summary of a parcel and wp ctracking list read \"1 × Complete skateboard (1 × Deck, 2 × Trucks)\".",
-        "A parcel holding only some of a build's parts lists those under the kit's name and says \"Its other parts come separately.\" (\"its other parts come separately\" in the one-line text).",
-        "Tracking reads the order item meta the builder's checkout writes, _cbuild_id and _cbuild_role, and nothing of the builder itself, so it works the same with the builder switched off or removed. It ties a build by those two alone, never by _cbuild_parent or _cbuild_children, which hold order item IDs that go stale when an order is copied. An order with no build lists exactly as before.",
-        "Template parcel-contents.php, the list within a list; tracking-page-items.php, tracking-page.php, myaccount/tracking.php, emails/tracking.php and emails/customer-parcel-status.php are now version 1.13.0. A theme's copy of an older version keeps working and shows a build as its loose lines. Shipment gains lines (the entries) beside contents (their text).",
-        "The new words in Canadian French, French, Spanish and German."
+        "The order screen's \"Items in this parcel\" groups a build sold by Creative Skateboard Builder as WooCommerce Product Bundles shows a bundle: a heading with the kit's name and the parts indented beneath it. Every part keeps its own quantity field, so a build can still go in more than one parcel. A \"Whole build\" box on the heading fills each empty part with what is left to ship, or empties them all, and shows as mixed when only some are chosen; it is never sent with the form, and stays hidden without JavaScript (assets/admin-order-items.js, loaded only for an order holding a build). The kit's line, which has nothing to ship (the builder's kits are virtual), is the heading only, unless the parcel being changed already lists it. Parts already in a parcel, what is checked on saving and the field names are as before, and an order with no build shows the form exactly as before."
     ]
 }
