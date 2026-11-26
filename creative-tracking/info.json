@@ -1,13 +1,13 @@
 {
-    "version": "1.14.0",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.14.0/creative-tracking-1.14.0.zip",
-    "sha256": "96c7e9fb303bcb85bcc75802d669cbeec9c5e742c047ad56ff04a5127bafd804",
+    "version": "1.14.1",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.14.1/creative-tracking-1.14.1.zip",
+    "sha256": "c12f7e57346482994d9641e95230c3c576c4aff1d9abec19c25bdb3565a14374",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.14.0",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.14.1",
     "changelog": [
-        "WooCommerce → Status → System status has a \"Creative Shipment Tracking\" section listing every Tracking template the theme or child theme overrides, with its version, and marking an outdated copy as WooCommerce's own Templates section does (\"Version 1.5.0 is out of date. The plugin has version 1.13.0.\"). WooCommerce compares only its own templates, so a theme's old copy of one of Tracking's (five changed in 1.13.0) kept showing a build as loose lines with nothing to say so. Copies are found where Tracking's template loader looks (creative-tracking/ in the child theme, then the parent, then the theme's root) and compared by their @version header as WooCommerce reads it; a copy without one counts as outdated. The section is in the copied system report too.",
-        "While any copy is outdated, a warning on WooCommerce's screens and Tracking's own (Ship orders, Import tracking, Shipping report), for users who can manage WooCommerce: \"Your theme has outdated copies of some Creative Shipment Tracking templates. Builds and new features may not show until they are updated.\", linked to the section. Dismissing it is per user, and it comes back when the list of outdated copies changes. The check is cached (cleared on a theme switch, on any install or update, and on Tracking's own update; the Status page checks afresh), and no other admin page runs it. Uninstalling removes the cache and the dismissals."
+        "A theme's outdated copies of Tracking's templates are reported in Tools → Site Health, as WooCommerce now reports its own, instead of in an admin notice. WooCommerce 11.2.1 dropped its outdated-templates notice for a Site Health test, and this one mirrors it: a \"Performance\" test that passes while every copy is up to date, and otherwise is a recommended improvement, \"Your theme contains outdated Creative Shipment Tracking template overrides\", listing each outdated copy with its version and linking to the section on WooCommerce → Status, which is unchanged. It reads the same cached check as 1.14.0.",
+        "1.14.0's warning on WooCommerce's screens and its Dismiss link. The update deletes every user's saved dismissal (ctracking_templates_notice_dismissed); uninstalling still deletes any left behind."
     ]
 }
