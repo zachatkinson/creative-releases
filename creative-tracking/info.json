@@ -1,14 +1,16 @@
 {
-    "version": "1.12.1",
-    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.12.1/creative-tracking-1.12.1.zip",
-    "sha256": "8f7f499f0a5dafabb6729fedcc3d63f644a3c8763a364c013652eea3efa5d747",
+    "version": "1.13.0",
+    "package": "https://github.com/zachatkinson/creative-releases/releases/download/creative-tracking-1.13.0/creative-tracking-1.13.0.zip",
+    "sha256": "2beaac6e4ac74d7c8a7ec8f091e60c7c85b52e05f5a45a49be965804bad1b5b6",
     "requires": "6.6",
     "requires_php": "8.1",
     "tested": "7.1",
-    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.12.1",
+    "url": "https://github.com/zachatkinson/creative-releases/releases/tag/creative-tracking-1.13.0",
     "changelog": [
-        "An update no longer stops a request with a fatal error. On the demo, the minute 1.12.0 replaced 1.11.3, one request to Dashboard → Updates died on plugins_loaded with \"class CreativeBranding\\Tracking\\Plugin not found\": it had loaded the plugin just before WordPress moved the 1.11.3 folder out, and reached plugins_loaded while the folder was missing, with an autoloader pointing at files no longer there. (The update itself runs in another request, and requests arriving during it get WordPress's maintenance page; only one already under way can meet the missing folder.) The main file now hooks its own functions, on the same hooks at the same priorities, and each runs the plugin only once its files are on disk; otherwise that request goes on without it, quietly, and the next has the new files. The same guard covers the updater, activation, deactivation and the Plugins row's links. A request still running the version being replaced is the one at risk, so updates from 1.12.1 on are covered; the update from 1.12.0 to 1.12.1 can still log this once.",
-        "tracking-page-items.php: Plugin Check's warning on the item photo is suppressed inline; wp_get_attachment_image() escapes its own markup.",
-        "tools/update-race.sh updates a throwaway site while requests keep arriving and reports any fatal error, for checking a release before it goes out."
+        "A build sold by Creative Skateboard Builder shows as one entry under the kit's name, with its parts in a list within it, instead of a line for the kit and a line for each part: on the tracking page (each parcel's \"In this parcel\" and \"In your order\"), in My Account's and Track an order's \"In this parcel\" column, in the HTML Shipped, Partially shipped and parcel status emails, and on Ship orders. The plain text emails, the order screen's summary of a parcel and wp ctracking list read \"1 × Complete skateboard (1 × Deck, 2 × Trucks)\".",
+        "A parcel holding only some of a build's parts lists those under the kit's name and says \"Its other parts come separately.\" (\"its other parts come separately\" in the one-line text).",
+        "Tracking reads the order item meta the builder's checkout writes, _cbuild_id and _cbuild_role, and nothing of the builder itself, so it works the same with the builder switched off or removed. It ties a build by those two alone, never by _cbuild_parent or _cbuild_children, which hold order item IDs that go stale when an order is copied. An order with no build lists exactly as before.",
+        "Template parcel-contents.php, the list within a list; tracking-page-items.php, tracking-page.php, myaccount/tracking.php, emails/tracking.php and emails/customer-parcel-status.php are now version 1.13.0. A theme's copy of an older version keeps working and shows a build as its loose lines. Shipment gains lines (the entries) beside contents (their text).",
+        "The new words in Canadian French, French, Spanish and German."
     ]
 }
